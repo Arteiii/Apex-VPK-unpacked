@@ -1,0 +1,189 @@
+resource/ui/menus/customize_consumables.menu
+{
+	menu
+	{
+		ControlName				Frame
+		xpos					0
+		ypos					0
+		zpos					3
+		wide					f0
+		tall					f0
+		autoResize				0
+		pinCorner				0
+		visible					1
+		enabled					1
+		PaintBackgroundType		0
+		infocus_bgcolor_override	"0 0 0 0"
+		outoffocus_bgcolor_override	"0 0 0 0"
+
+        ScreenFrame
+        {
+            ControlName				Label
+            xpos					0
+            ypos					0
+            wide					%100
+            tall					%100
+            labelText				""
+            //visible				    1
+            //bgcolor_override        "255 255 0 100"
+            //paintbackground         1
+        }
+
+        Vignette
+        {
+            ControlName             ImagePanel
+            InheritProperties       MenuVignette
+        }
+
+		ScreenBlur
+		{
+			ControlName				Label
+		    labelText				""
+		}
+
+		TabsBackground
+        {
+            ControlName				RuiPanel
+            InheritProperties		TabsBackgroundTallWithCapstone
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	TOP
+            pin_to_sibling_corner	TOP
+        }
+        TabsCommon
+        {
+            ControlName				CNestedPanel
+            classname				"TabsCommonClass"
+            zpos					3
+            wide					f0
+            tall					84
+            visible					1
+            controlSettingsFile		"resource/ui/menus/panels/common_tabs_tall.res"
+            clip					0
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	TOP
+            pin_to_sibling_corner	TOP
+        }
+
+		UserInfo
+		{
+			ControlName             RuiButton
+			InheritProperties       UserInfo
+	        zpos                    4
+
+	        pin_to_sibling			ScreenFrame
+			pin_corner_to_sibling	TOP_RIGHT
+			pin_to_sibling_corner	TOP_RIGHT
+		}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        StickersPanel0
+	    {
+		    ControlName				CNestedPanel
+		    classname				"TabPanelClass"
+			wide					1824
+			tall					814
+		    visible					0
+		    tabPosition             1
+		    controlSettingsFile		"resource/ui/menus/panels/consumable_stickers.res"
+
+			pin_to_sibling			TabsCommon
+			pin_corner_to_sibling	TOP
+			pin_to_sibling_corner	BOTTOM
+	    }
+
+	    StickersPanel1
+	    {
+		    ControlName				CNestedPanel
+		    classname				"TabPanelClass"
+			wide					1824
+			tall					814
+		    visible					0
+		    tabPosition             1
+		    controlSettingsFile		"resource/ui/menus/panels/consumable_stickers.res"
+
+			pin_to_sibling			TabsCommon
+			pin_corner_to_sibling	TOP
+			pin_to_sibling_corner	BOTTOM
+	    }
+
+	    StickersPanel2
+	    {
+		    ControlName				CNestedPanel
+		    classname				"TabPanelClass"
+			wide					1824
+			tall					814
+		    visible					0
+		    tabPosition             1
+		    controlSettingsFile		"resource/ui/menus/panels/consumable_stickers.res"
+
+			pin_to_sibling			TabsCommon
+			pin_corner_to_sibling	TOP
+			pin_to_sibling_corner	BOTTOM
+	    }
+
+	    StickersPanel3
+	    {
+		    ControlName				CNestedPanel
+		    classname				"TabPanelClass"
+			wide					1824
+			tall					814
+		    visible					0
+		    tabPosition             1
+		    controlSettingsFile		"resource/ui/menus/panels/consumable_stickers.res"
+
+			pin_to_sibling			TabsCommon
+			pin_corner_to_sibling	TOP
+			pin_to_sibling_corner	BOTTOM
+	    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        MatchmakingStatus
+        {
+            ControlName		        RuiPanel
+            InheritProperties		MatchmakingStatus
+			xpos_nx_handheld		35			[$NX || $NX_UI_PC]
+
+            pin_to_sibling						ScreenFrame
+            pin_corner_to_sibling				BOTTOM
+            pin_corner_to_sibling_nx_handheld	BOTTOM_RIGHT		[$NX || $NX_UI_PC]
+            pin_to_sibling_corner				BOTTOM
+            pin_to_sibling_corner_nx_handheld	BOTTOM_RIGHT		[$NX || $NX_UI_PC]
+        }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		ToolTip
+        {
+            ControlName				RuiPanel
+            InheritProperties       ToolTip
+        }
+
+		ButtonTooltip
+		{
+			ControlName				CNestedPanel
+			InheritProperties		ButtonTooltip
+		}
+
+		FooterButtons
+		{
+			ControlName				CNestedPanel
+			InheritProperties       FooterButtons
+		}
+
+	    PreviewStyleToggle
+	    {
+		    ControlName			RuiButton
+	        xpos                r240
+	        ypos                r99
+	        zpos			    21
+	        wide			    192
+	        tall			    45
+	        rui					"ui/sticker_preview_style_toggle.rpak"
+	        clipRui             0
+	    }
+	}
+}
