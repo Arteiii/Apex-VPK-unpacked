@@ -1003,6 +1003,7 @@ void function FreeDM_SetAudioEvent( int event, string eventString )
  
 #endif          
 
+const int FramesToWait = 60                                           
 #if SERVER
                                                 
  
@@ -1010,11 +1011,31 @@ void function FreeDM_SetAudioEvent( int event, string eventString )
 	                                        
 	                                             
 
+	                    
 	                           
 	 
 		                                                                                
-
+		              
 		                                                                  
+
+		                                                     
+		                                                                                     
+		 
+			                                                                                                      
+			                                          
+			 
+				                                             
+				 
+					                                           
+						                                                                               
+					    
+						                                        
+					     
+				 
+			 
+			                       
+			     
+		 
 
 		                                                                                                                             
 		 
@@ -1023,7 +1044,7 @@ void function FreeDM_SetAudioEvent( int event, string eventString )
 		 
 	 
 
-	                     
+	                                                                   
 	 
 		                                                        
 		                                                                                        
@@ -1193,10 +1214,9 @@ void function FreeDM_SetAudioEvent( int event, string eventString )
 	                                                  
 	                                                     
 
-                                                                                   
-     
-                                                                   
-     
+	                                           
+	                                     
+		                                                           
 
 	                              
 	                                       
@@ -1514,6 +1534,7 @@ const string FREEDM_DEFAULT_AIRDROP_CONTENTS = "arenas_red_airdrop_weapons arena
 	                      
  
 #endif          
+
 
 void function FreeDM_SetScoreEventOverride()
 {
@@ -2123,6 +2144,7 @@ bool function GetShouldShuffleLoadoutsRounds()
 
                                                     
  
+	                                                                                                                                                
 	                      
 	                                                            
  

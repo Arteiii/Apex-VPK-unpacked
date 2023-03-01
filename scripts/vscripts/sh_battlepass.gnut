@@ -134,6 +134,7 @@ struct FileStruct_LifetimeLevel
 	ItemFlavor ornull currentBattlePass
 	int expirationTimestamp
 	bool battlePassIsEnabled
+	bool sorted = false
 }
 FileStruct_LifetimeLevel& fileLevel
 
@@ -1171,6 +1172,20 @@ int function BattlePassPurchasedXP_GetXPAmount( ItemFlavor purchasedXPFlav )
 
 
 #if SERVER
+                                                                             
+ 
+	                                              
+	                                              
+
+	                                                                                  
+		         
+
+	                                                                                  
+		        
+
+	        
+ 
+
                                                                                                   
                                                           
  
@@ -1188,20 +1203,10 @@ int function BattlePassPurchasedXP_GetXPAmount( ItemFlavor purchasedXPFlav )
 	                                                                                   
 		      
 
-	                                                                                      
-
-	                                                                                       
-
 	            
-		                                        
+		                       
 		 
 			                                            
-
-			                      
-				                              
-					                                              
-					             
-				 
 		 
 	 
 	                                           
@@ -1210,28 +1215,29 @@ int function BattlePassPurchasedXP_GetXPAmount( ItemFlavor purchasedXPFlav )
 		           
 
 	                                
-	                         
-	 
-		                                                         
-			                         
+	                                                         
+		                         
 
-		                                            
+	                                            
+
+	                                                                                            
+	                                                                                          
+	                                             
+
+	                        
+	 
+		                                                                   
+		                       
 	 
 
 	                                                                                   
-	                                                             
+	                                                                      
 	 
-		                         
-		 
-			                                   
+		                                                         
 				        
-		 
-		    
-		 
-			                                                                                      
-			                                                                     
-				        
-		 
+
+		                             
+			        
 
 		                              
 		                       
@@ -1248,8 +1254,13 @@ int function BattlePassPurchasedXP_GetXPAmount( ItemFlavor purchasedXPFlav )
 		                                                                                                                                  
 			        
 
-		                         
+		                                                                                       
 		                                                                                             
+
+		                                                                                                                                                                      
+			        
+
+		                                                              
 
 		                         
 		                                                 
@@ -1273,6 +1284,14 @@ int function BattlePassPurchasedXP_GetXPAmount( ItemFlavor purchasedXPFlav )
 
 				                                                                         
 				 
+					                                      
+					 
+						                                          
+					 
+					                                     
+					 
+						        
+					 
 					                                                     
 						        
 				 
@@ -1283,7 +1302,7 @@ int function BattlePassPurchasedXP_GetXPAmount( ItemFlavor purchasedXPFlav )
 			                             
 		 
 
-		                                             
+		                                                                                               
 
 		                                                                                                               
 		                                                                                            
@@ -1300,41 +1319,20 @@ int function BattlePassPurchasedXP_GetXPAmount( ItemFlavor purchasedXPFlav )
 			                                          
 				           
 
-			                                                                 
-			 
-				                                                   
-			 
-			    
-			 
-				                                                                          
-			 
-		 
+			                                                     
+				                                                                                                                            
 
-		                      
-			                              
-				                                                                                             
-				             
-			 
+			                                                                 
+				                                                   
+			    
+				                                                                          
+		 
 
 		                                                                                  
-		 
-			                      
-				                              
-					                                                                                          
-					             
-				 
 			        
-		 
 
 		                                                                        
-		 
-			                      
-				                              
-					                                                                                          
-					             
-				 
 			        
-		 
 
 		                            
 		                                                                   
@@ -1373,29 +1371,13 @@ int function BattlePassPurchasedXP_GetXPAmount( ItemFlavor purchasedXPFlav )
 					                                                   
 				 
 			 
-
-
 			                                
 		 
 
-		                      
-			                              
-				                                                                              
-					           
-					                   
-					                               
-					                              
-					                             
-					                                         
-				             
-			 
-
 		                                                           
-		 
 			                                                                                                  
-		 
 
-		                                                   
+		                                                                                                     
 
 		                                                                                                                        
 		                                                                                                     
@@ -1416,14 +1398,13 @@ int function BattlePassPurchasedXP_GetXPAmount( ItemFlavor purchasedXPFlav )
 			                                          
 				           
 
+			                                                     
+				                                                                                                                              
+
 			                                                                 
-			 
 				                                                   
-			 
 			    
-			 
 				                                                                             
-			 
 		 
 	 
  

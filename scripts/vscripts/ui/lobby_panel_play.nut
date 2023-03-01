@@ -1990,6 +1990,9 @@ string function GetCrossplayStatus()
 
 void function RestartMatchmakingAfterRotation( string previousPlaylistName )
 {
+	EndSignal( uiGlobal.signalDummy, "CleanupInGameMenus" )
+	EndSignal( uiGlobal.signalDummy, "LevelShutdown" )
+
 	int retryCount = 5
 	string activeUISlot = GetPlaylistVarString( previousPlaylistName, "ui_slot", "" )
 	string nextUISlot = ""

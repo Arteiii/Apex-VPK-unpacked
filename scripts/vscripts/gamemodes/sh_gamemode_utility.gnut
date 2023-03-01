@@ -19,6 +19,7 @@ global function GamemodeUtility_RegisterNetworking
                                                                                                           
                                                                                                                                                                          
                                                                                             
+                                                                                                                        
                                                                                                                                                                                                                             
 #endif          
 
@@ -1062,6 +1063,45 @@ array<entity> function GamemodeUtility_GetLocalTeamPlayers( bool friendly )
 #endif          
 
 #if SERVER
+                                                         
+ 
+	                                                      
+
+	                                           
+	 
+		                              
+		                                                          
+		 
+			                                                                                  
+			                        
+				                        
+		 
+		                                 
+			           
+	 
+	    
+	 
+		                                 
+		                                     
+		 
+			                                         
+			                                               
+				        
+
+			                                   
+			 
+				                                   
+			 
+			                                              
+			 
+				           
+			 
+		 
+	 
+
+	            
+ 
+
                                                                                                                                
                                                                                                                                       
                                                                                                                                                                                    
@@ -1099,6 +1139,7 @@ array<entity> function GamemodeUtility_GetLocalTeamPlayers( bool friendly )
 			                                                        
 	 
  
+
 #endif          
 
                                                                                                                         

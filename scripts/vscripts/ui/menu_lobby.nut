@@ -38,7 +38,7 @@ struct
 	var serverDebugID
 	var dx12BetaText
 
-	int previousRotationTime = -1
+	int nextRotationTime = -1
                        
                                     
       
@@ -99,7 +99,7 @@ void function InitLobbyMenu( var newMenuArg )
 	file.menu = menu
 
 	RegisterSignal( "LobbyMenuUpdate" )
-	
+
                  
 	AddUICallback_OnResolutionChanged( Lobby_RefreshMinimapCoords )
       
@@ -586,21 +586,18 @@ void function Lobby_UpdateSelectedPlaylistUsingUISlot( string previousPlaylist )
 
 void function TrackPlaylistRotation()
 {
-	if ( file.previousRotationTime == -1 )
-		file.previousRotationTime = GetSoonestPlaylistRotationTime()
-
                        
                                              
                                                                                           
       
 
                        
-                                                                                                                                                                
+                                                                                                                                                            
      
-	if ( file.previousRotationTime < GetSoonestPlaylistRotationTime() )
+	if ( file.nextRotationTime < GetSoonestPlaylistRotationTime() )
       
 	{
-		file.previousRotationTime = GetSoonestPlaylistRotationTime()
+		file.nextRotationTime = GetSoonestPlaylistRotationTime()
                          
                                                                                            
         
@@ -615,10 +612,12 @@ void function TrackPlaylistRotation()
 		}
 	}
 
-	string selectedPlaylist = Lobby_GetSelectedPlaylist()
-	if ( !Lobby_IsPlaylistAvailable( selectedPlaylist ) && !AreWeMatchmaking() && !uiGlobal.isLevelShuttingDown )
-	{
-		Lobby_UpdateSelectedPlaylistUsingUISlot( selectedPlaylist )
+	ForceRefreshVisiblePlaylists()
+		string selectedPlaylist = Lobby_GetSelectedPlaylist()
+		if ( !Lobby_IsPlaylistAvailable( selectedPlaylist ) && !AreWeMatchmaking() && !uiGlobal.isLevelShuttingDown )
+		{
+			Lobby_UpdateSelectedPlaylistUsingUISlot( selectedPlaylist )
+
 	}
 }
 

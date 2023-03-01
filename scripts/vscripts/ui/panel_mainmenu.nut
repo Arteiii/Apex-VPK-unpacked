@@ -487,16 +487,18 @@ void function PrelaunchValidation( bool autoContinue = false )
 		if ( !isSignedIn || isProfileSelectRequired )
 		{
 			file.forceProfileSelect = false
-
-			if ( autoContinue )
+			if (!Durango_IsGDK() )
 			{
-				Xbox_ShowAccountPicker()
+				if ( autoContinue  )
+				{
+					Xbox_ShowAccountPicker()
+				}
+				else
+				{
+					SetLaunchState( eLaunchState.WAIT_TO_CONTINUE, "", Localize( "#MAINMENU_SIGN_IN" ) )
+				}
+				return
 			}
-			else
-			{
-				SetLaunchState( eLaunchState.WAIT_TO_CONTINUE, "", Localize( "#MAINMENU_SIGN_IN" ) )
-			}
-			return
 		}
 
 		bool isGuest = Xbox_IsGuest()
@@ -845,7 +847,7 @@ void function UICodeCallback_JoiningInvite()
 void function UICodeCallback_OnJoinFailed()
 {
 	printt( "UICodeCallback_OnFailedUserSignIn" )
-	SetLaunchState( eLaunchState.WAIT_TO_CONTINUE, "", Localize( "#MAINMENU_CONTINUE" ))
+	SetLaunchState( eLaunchState.WAIT_TO_CONTINUE, "", Localize( "#MAINMENU_RETRY" ))
 }
 #endif
 
@@ -882,8 +884,7 @@ void function UICodeCallback_OnUserSignOut()
 #if XBOX_PROG
 void function XBox_PermissionsDialog()
 {
-	while (!XBox_VerifyMultiplayerPermissions())
-		WaitFrame()
+	XBox_VerifyMultiplayerPermissions()
 
 	if ( !Console_HasPermissionToPlayMultiplayer() )
 		file.forceProfileSelect = true

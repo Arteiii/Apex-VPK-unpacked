@@ -427,7 +427,6 @@ void function Thread_Teams_PopulateHeaderRui(var header, var frame, int teamInde
 		if( IsValid(file.Callback_Header) )
 			file.Callback_Header( headerRui, frameRui, team )
 
-
 		WaitFrame()
 	}
 }
@@ -453,6 +452,17 @@ void function Teams_PopulateHeaderRui( var scoreHeaderRui, int teamIndex, Scoreb
 		teamColor = SrgbToLinear( GetSkydiveSmokeColorForTeam( teamIndex + TEAM_IMC) / 255.0 )
 
 	RuiSetColorAlpha( scoreHeaderRui, "teamColor", teamColor, 1 )
+
+
+	string teamName = ""
+	if( IsPrivateMatch() && !AllianceProximity_IsUsingAlliances() )
+	{
+		string customMatchTeamName = PrivateMatch_GetTeamName( teamIndex + TEAM_IMC )
+
+		if( customMatchTeamName != "" && customMatchTeamName != Localize( "#TEAM_NUMBERED", (teamIndex + 1) ) )
+			teamName = "(" + customMatchTeamName.toupper() + ")"
+	}
+	RuiSetString( scoreHeaderRui, "headerAltText", teamName )
 }
 
 vector function Teams_GetTeamColor( int teamIndex )

@@ -251,10 +251,10 @@ void function PrivateMatch_RegisterNetworking()
 }
 
 #if CLIENT
-
+                                                                                        
 string function PrivateMatch_GetTeamName( int teamIndex )
 {
-	Assert( teamIndex >= TEAM_MULTITEAM_FIRST )
+	Assert( teamIndex > TEAM_INVALID )                                 
 	string teamName = GameRules_GetTeamName( teamIndex )
 	string defaultTeamName = ( AllianceProximity_IsUsingAlliances() )?Localize( "#TEAM_NUMBERED", AllianceProximity_GetAllianceFromTeam( teamIndex ) + 1 ) :Localize( "#TEAM_NUMBERED", teamIndex - 1 )
 
@@ -1669,7 +1669,10 @@ void function ChampionScreenSetWinningTeamName( var rui )
 	if ( !IsPrivateMatch() )
 		return
 
-	RuiSetString( rui, "winningTeamName", PrivateMatch_GetTeamName( GetWinningTeam() ).toupper() )
+	int winningTeamOrAlliance = GamemodeUtility_GetWinningTeamOrAlliance()
+	int winningTeamIndex = AllianceProximity_IsUsingAlliances() ? AllianceProximity_GetRepresentativeTeamForAlliance( winningTeamOrAlliance ) : winningTeamOrAlliance
+	RuiSetString( rui, "winningTeamName", PrivateMatch_GetTeamName( winningTeamIndex ).toupper() )
+
 }
 #endif         
 

@@ -221,9 +221,8 @@ global function CurrentModeIsSurvival
                                           
                             
                                                       
-       
+                                            
                                          
-            
       
 
                         
@@ -2265,6 +2264,11 @@ bool function IsValidMapForStats()
 	                  
 		            
 
+                             
+		                           
+			            
+       
+
 	                                    
 		            
 
@@ -2289,7 +2293,7 @@ bool function IsValidMapForStats()
 
                             
 	                           
-		                                                       
+		            
       
 
 	           
@@ -2386,7 +2390,13 @@ bool function IsValidMapForStats()
 	                                                                          
 	                                      
 
-	                                       
+	                                          
+                             
+		                                                                                        
+			                                    
+       
+
+	                                                                         
 		      
 
 	                                     
@@ -2457,10 +2467,50 @@ bool function IsValidMapForStats()
 	                                                                                        
 	                                                            
 
+	                                                                            
 	                                                                                        
 	                                                                                                                
 
 	                                                                      
+
+                             
+		                           
+		 
+			                                                                                                                   
+			                                                                  
+			                                                                                                                  
+			                                                    
+			 
+				                                  
+				                                                   
+				 
+					                                                                                 
+					                                                                                                         
+
+					                                     
+					 
+						                                                                                                                                 
+						                                                                                                                                                       
+					 
+				 
+			 
+			
+			                
+			 
+				                                                                                   
+				                                     
+					                                                                                                                                                         
+			 
+
+			                                                                               
+			                                                                                                       
+
+			                                     
+				                                                                                                                               
+
+			      
+		 
+       
 
 	                                
 	 
@@ -3203,7 +3253,12 @@ bool function IsValidMapForStats()
 		      
 
 	                                           
+	 
+		                                       
+			        
+
 		                                                                                         
+	 
  
 
                                                                                                      
@@ -6212,6 +6267,16 @@ StatCalcFuncInfo function SetupGetNumCharactersWithBannersOnceFilledForStat( Sta
 
                              
  #if SERVER || CLIENT || UI
+ string function GetBotQueueGraduationStatRef( entity player )
+ {
+	 foreach ( string statRef, int value in GetBotQueueGradStatValues() )
+	 {
+		 Assert( IsValidStatEntryRef(statRef) )
+		 if ( GetStat_Int( player, GetStatEntryByRef( statRef ), eStatGetWhen.CURRENT ) >= value )
+			 return statRef
+	 }
+	 return ""
+ }
  table< string, int > function GetBotQueueGradStatValues()
  {
 	                                                       

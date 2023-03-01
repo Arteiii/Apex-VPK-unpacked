@@ -119,7 +119,7 @@ bool function IsLegalFlightPath( FlightPath flightPath, vector origin, vector fo
 			if ( Distance( result.endPos, endPos ) > 16 )
 			{
 				             
-				  	                                                                           
+				                                                                               
 
 				DoTraceCoordCheck( true )
 				return false
@@ -127,7 +127,7 @@ bool function IsLegalFlightPath( FlightPath flightPath, vector origin, vector fo
 		}
 
 		             
-		  	                                                                             
+		                                                                                
 	}
 
 	                                                                                            
@@ -1721,6 +1721,21 @@ array<entity> function GetAirDropTraceIgnoreEntArray()
 	                                          
 	 
 		                                                                   
+
+                         
+		                                                                             
+		 
+			                                                     
+			                                                                                                               
+			                                                                                                           
+			                                                                                                                                                                                                                                                                             
+			                                                                                      
+			 
+				                                                                                                                         
+				                                                                                                                                                                              
+			 
+		 
+        
 
 		                                                                                
 	 

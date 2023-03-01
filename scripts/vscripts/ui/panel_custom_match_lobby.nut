@@ -597,8 +597,9 @@ void function DropPlayer( CustomMatch_LobbyPlayer player )
 		if( teamIndex < 0 )
 			teamIndex = Hud_GetScriptID( dropTarget ).tointeger()
 
-		if ( player.team != teamIndex )
-			CustomMatch_SetTeam( teamIndex, player.hardware, player.uid )
+		int correctedTeamIndex = CustomMatchTeamRoster_GetCorrectedTeamId( teamIndex )
+		if ( player.team != correctedTeamIndex )
+			CustomMatch_SetTeam( correctedTeamIndex, player.hardware, player.uid )
 	}
 	DragStop()
 }

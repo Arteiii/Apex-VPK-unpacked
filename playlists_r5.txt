@@ -689,82 +689,6 @@ playlists
             }
         }
 
-		survival_bots_vs_humanteams
-		{
-		    inherit survival
-		    vars
-		    {
-		        visible 1
-			    visible_schedule_block_0        "2023-02-14 10:00:00 -08:00 | 2023-05-10 10:00:00 -07:00"
-		        ui_slot regular_1
-
-		        panel_image panel_canyon_land_mu3
-
-		        image trios
-		        video trios
-
-		        name #PL_TRIO
-		        description #PL_survival_squads_desc
-		        abbreviation #PL_TRIO
-		        map_name #MP_RR_CANYONLANDS_MU1
-
-		        //AUTOPLAYERS
-		        ap_bots 1
-		        ap_follow_leader 1
-		        ap_gameplay_mode 1
-		        ap_use_dynamic_difficulty 1
-		        ap_ignore_downed_players 1
-		        ap_landing_timer 90.0
-		        NotAllowSpectatingBots 0
-
-		        ap_characters_allowed "character_lifeline character_bangalore character_bloodhound character_gibraltar character_pathfinder character_wraith"
-		        allow_duplicate_character_picks_in_team 0
-
-		        ap_no_bot_combat_length 0.0
-
-		        //Normal 60
-		        max_teams 20
-		        max_players 60
-		        min_players 60
-		        max_botonly_teams 16
-		        max_nofill_players 0
-
-		        ap_min_aim_noise 1.0
-		        ap_max_aim_noise 1.6
-
-		        ap_min_strafe_press_time 1.0
-		        ap_max_strafe_press_time 2.0
-
-		        ap_bot_on_bot_aim_modifier 1.2
-
-		        ap_conservative_ring_radius_modifier 0.3
-		        ap_extra_conservative_ring_radius_modifier 0.5
-
-		        ap_team_leader_max_objective_radius 50
-
-		        ap_suppressive_fire_enabled 1
-		        ap_suppressive_fire_time_threshold 10
-		        ap_suppressive_fire_timeout 120
-
-		        survival_takeover_name "#PL_ORIENTATION_MATCH"
-		        require_new_player_orientation 0
-
-		        anniversary_dressing_disable 1
-		        anniversary_balloon_enable 0
-
-		        hovertanks_count_intro 0
-		        hovertanks_count_mid 0
-		        hovertanks_chance_mid 0
-		        canyonlands_hovertanks_circle_index 0
-
-                stats_match_type "none"
-		    }
-
-		    gamemodes { survival { maps {
-		        mp_rr_canyonlands_hu 1
-		    } } }
-		}
-
 		///////////////////////////////////
         ////////////// CONTROL ////////////
         ///////////////////////////////////
@@ -2333,6 +2257,82 @@ playlists
                 mp_lobby 1
             } } }
         }
+		
+		survival_bots_vs_humanteams
+		{
+		    inherit survival
+		    vars
+		    {
+		        visible 1
+			    visible_schedule_block_0        "2023-02-14 10:00:00 -08:00 | 2023-05-10 10:00:00 -07:00"
+		        ui_slot regular_1
+
+		        panel_image panel_canyon_land_mu3
+
+		        image trios
+		        video trios
+
+		        name #PL_TRIO
+		        description #PL_survival_squads_desc
+		        abbreviation #PL_TRIO
+		        map_name #MP_RR_CANYONLANDS_MU1
+
+		        //AUTOPLAYERS
+		        ap_bots 1
+		        ap_follow_leader 1
+		        ap_gameplay_mode 1
+		        ap_use_dynamic_difficulty 1
+		        ap_ignore_downed_players 1
+		        ap_landing_timer 90.0
+		        NotAllowSpectatingBots 0
+
+		        ap_characters_allowed "character_lifeline character_bangalore character_bloodhound character_gibraltar character_pathfinder character_wraith"
+		        allow_duplicate_character_picks_in_team 0
+
+		        ap_no_bot_combat_length 0.0
+
+		        //Normal 60
+		        max_teams 20
+		        max_players 60
+		        min_players 60
+		        max_botonly_teams 16
+		        max_nofill_players 0
+
+		        ap_min_aim_noise 1.0
+		        ap_max_aim_noise 1.6
+
+		        ap_min_strafe_press_time 1.0
+		        ap_max_strafe_press_time 2.0
+
+		        ap_bot_on_bot_aim_modifier 1.2
+
+		        ap_conservative_ring_radius_modifier 0.3
+		        ap_extra_conservative_ring_radius_modifier 0.5
+
+		        ap_team_leader_max_objective_radius 50
+
+		        ap_suppressive_fire_enabled 1
+		        ap_suppressive_fire_time_threshold 10
+		        ap_suppressive_fire_timeout 120
+
+		        survival_takeover_name "#PL_ORIENTATION_MATCH"
+		        require_new_player_orientation 0
+
+		        anniversary_dressing_disable 1
+		        anniversary_balloon_enable 0
+
+		        hovertanks_count_intro 0
+		        hovertanks_count_mid 0
+		        hovertanks_chance_mid 0
+		        canyonlands_hovertanks_circle_index 0
+
+                stats_match_type "none"
+		    }
+
+		    gamemodes { survival { maps {
+		        mp_rr_canyonlands_hu 1
+		    } } }
+		}
 
     } //end of playlists
 

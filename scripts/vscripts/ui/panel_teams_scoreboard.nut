@@ -9,7 +9,7 @@ global function UI_ToggleReportTooltip
 
 global function ScoreboardMenu_CustomMatch_GetButtonTeamID
 global function ScoreboardMenu_CustomMatch_GetHeaderForButton
-
+global function CustomMatchTeamRoster_GetCorrectedTeamId
 global function SetPlayerTooltipAfterCallback
 
 enum eRosterAction
@@ -575,11 +575,12 @@ void function UI_SetScoreboardTeamData( var panel, int teams, int playersPerTeam
 		if( teamIndex ==  localPlayersTeam )
 			continue
 
-		var teamHeader = UpdateTeamHeader( panel, teamIndex, teamsAdded )
+		int correctedTeamIndex = CustomMatchTeamRoster_GetCorrectedTeamId( teamIndex, false )
+		var teamHeader = UpdateTeamHeader( panel, correctedTeamIndex, teamsAdded )
 
 		for( int playerRow = 0; playerRow <= playersPerTeam - 1; playerRow++ )
 		{
-			UpdateTeamPlayer( panel, teamHeader,teamsAdded, teamIndex, playerRow )
+			UpdateTeamPlayer( panel, teamHeader,teamsAdded, correctedTeamIndex, playerRow )
 		}
 		teamsAdded++
 	}
@@ -904,7 +905,7 @@ void function ScoreboardMenu_CustomMatch_BindTeamHeader( var header, var frame, 
 		if( max_alliances > 0 )
 		{
 			int teamsPerAlliance = totalTeams / max_alliances
-			int alliance = int( floor( teamIndex / teamsPerAlliance ) )
+			int alliance = ( teamIndex % max_alliances )
 			teamName = Localize( "#TEAM_NUMBERED", (alliance + 1) )
 			teamColor = ( alliance == 0 )? friendlyColor: enemyColor
 		}
@@ -925,7 +926,7 @@ void function ScoreboardMenu_CustomMatch_BindTeamHeader( var header, var frame, 
 		if( max_alliances > 0 )
 		{
 			int teamsPerAlliance = totalTeams / max_alliances
-			int alliance = int( floor( teamIndex / teamsPerAlliance ) )
+			int alliance = ( teamIndex % max_alliances )
 
 			teamName = Localize( Squads_GetSquadName( alliance, isWinterExpress ) )
 			teamColor = Squads_GetSquadColor( alliance, isWinterExpress )
@@ -937,8 +938,13 @@ void function ScoreboardMenu_CustomMatch_BindTeamHeader( var header, var frame, 
 		}
 	}
 
-	if( (teamIndex + 1) in file.customMatchData.teamNames )
-		teamName += " (" + file.customMatchData.teamNames[teamIndex + 1] + ")"
+	if( (teamIndex + TEAM_IMC) in file.customMatchData.teamNames )
+	{
+		string customMatchName = file.customMatchData.teamNames[teamIndex + TEAM_IMC]
+		
+		if( customMatchName != "" )
+			teamName += " (" + customMatchName + ")"
+	}
 
 	RuiSetString( headerRui, "headerText", teamName )
 	RuiSetColorAlpha( headerRui, "teamColor", teamColor, 1 )
@@ -1241,8 +1247,10 @@ void function CustomMatchTeamHeader_OnLeftClick( var button )
 		return
 
 	int teamIndex = ScoreboardMenu_CustomMatch_GetButtonTeamID( button )
-	if ( teamIndex != CustomMatch_GetLocalPlayerData().team )
-		CustomMatch_SetTeam( teamIndex, GetPlayerHardware(), GetPlayerUID() )
+	int correctedTeamIndex = CustomMatchTeamRoster_GetCorrectedTeamId( teamIndex )
+
+	if ( correctedTeamIndex != CustomMatch_GetLocalPlayerData().team )
+		CustomMatch_SetTeam( correctedTeamIndex, GetPlayerHardware(), GetPlayerUID() )
 }
 
 void function CustomMatchTeamRoster_OnRightClick( var button )
@@ -1253,28 +1261,49 @@ void function CustomMatchTeamRoster_OnRightClick( var button )
 	if ( ActionsLocked() || InputIsButtonDown( MOUSE_LEFT ) || InputIsButtonDown( BUTTON_A ) )
 		return
 
-	int teamIndex = ScoreboardMenu_CustomMatch_GetButtonTeamID( button ) - 1
+	int teamIndex = ScoreboardMenu_CustomMatch_GetButtonTeamID( button )
+	int correctedTeamIndex = CustomMatchTeamRoster_GetCorrectedTeamId( teamIndex ) - 1
 
-	if ( !CanRenameTeam( teamIndex + 1 ) )
+	if ( !CanRenameTeam( correctedTeamIndex + 1 ) )
 		return
 
 	ConfirmDialogData data
 	data.headerText = "#CUSTOM_MATCH_CHANGE_TEAM_NAME"
-	data.messageText = Localize( "#CUSTOM_MATCH_CHANGE_TEAM_NAME_DESC", teamIndex )
+	data.messageText = Localize( "#CUSTOM_MATCH_CHANGE_TEAM_NAME_DESC", correctedTeamIndex )
 	data.resultCallback = void function( int result )
 	{
 		CustomMatchLobby_OnSetTeamNameOpenOrClose( false )
 	}
 	CustomMatchLobby_OnSetTeamNameOpenOrClose( true )
-	OpenTextEntryDialogFromData( data, void function( string name ) : ( teamIndex )
+	OpenTextEntryDialogFromData( data, void function( string name ) : ( correctedTeamIndex )
 	{
 		string _name = strip( name )
-		if ( _name == "" )
-			_name = Localize( "#TEAM_NUMBERED", teamIndex - 1 )
-		CustomMatch_SetTeamName( teamIndex, _name )
+		CustomMatch_SetTeamName( correctedTeamIndex + 1, _name )
 	} )
 }
 
+int function CustomMatchTeamRoster_GetCorrectedTeamId( int teamIndex = 0, bool useIMCOffset = true )
+{
+	int maxAlliances = GetPlaylistVarInt( file.customMatchData.playlist, "max_alliances", 0 )
+	int correctedTeamIndex = teamIndex
+
+	if( useIMCOffset && correctedTeamIndex < TEAM_IMC )                                                             
+		return correctedTeamIndex
+
+	if( IsCustomMatchLobbyMenu() && maxAlliances > 1 )
+	{
+		if( useIMCOffset )
+			correctedTeamIndex = correctedTeamIndex - TEAM_IMC
+
+		int teamsPerAlliance = file.customMatchData.maxTeams / maxAlliances
+		correctedTeamIndex = ( ( correctedTeamIndex % teamsPerAlliance ) * maxAlliances ) + ( correctedTeamIndex / teamsPerAlliance )
+
+		if( useIMCOffset )
+			correctedTeamIndex = correctedTeamIndex + TEAM_IMC
+	}
+
+	return correctedTeamIndex
+}
 bool function CustomMatchTeamRoster_OnKeyPress( var button, int keyIndex, bool isPressed )
 {
 	if ( ActionsLocked() )
@@ -1294,10 +1323,12 @@ bool function CustomMatchTeamRoster_OnKeyDown( var button, int keyIndex )
 		return false
 
 	int teamIndex = ScoreboardMenu_CustomMatch_GetButtonTeamID( button )
+	int correctedTeamIndex = CustomMatchTeamRoster_GetCorrectedTeamId( teamIndex )
+
 	switch ( keyIndex )
 	{
 		case KEY_K:
-			TryDisplayKickTeam( teamIndex )
+			TryDisplayKickTeam( correctedTeamIndex )
 			return true
 		default:
 			return false
@@ -1311,10 +1342,12 @@ bool function CustomMatchTeamRoster_OnKeyHold( var button, int keyIndex )
 		return false
 
 	int teamIndex = ScoreboardMenu_CustomMatch_GetButtonTeamID( button )
+	int correctedTeamIndex = CustomMatchTeamRoster_GetCorrectedTeamId( teamIndex )
+
 	switch ( keyIndex )
 	{
 		case BUTTON_STICK_RIGHT:
-			thread OnHold_internal( keyIndex, teamIndex, TryDisplayKickTeam )
+			thread OnHold_internal( keyIndex, correctedTeamIndex, TryDisplayKickTeam )
 			return true
 		default:
 			return false
