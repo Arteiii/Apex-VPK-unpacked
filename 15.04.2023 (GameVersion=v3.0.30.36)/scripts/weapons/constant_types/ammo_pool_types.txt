@@ -1,0 +1,21 @@
+// Read by code, which generates the enum for script.
+// To generate: r2_static_128 -scriptdocs
+
+// Weapons that do not specify an ammo pool type will be assigned the first type.
+//enum eAmmoPoolType
+//{
+/////////////////////////////
+
+	bullet
+	highcal
+	special
+	shotgun
+                     
+          
+      
+    sniper
+    arrows
+
+	//_count
+/////////////////////////////
+//}

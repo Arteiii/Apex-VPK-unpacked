@@ -1,0 +1,45 @@
+models:
+[
+	mdl/levels_terrain/mp_rr_divided_lookdev/wilds_veg_mossclumphang_01.rmdl
+	mdl/levels_terrain/mp_rr_divided_lookdev/wilds_veg_mosspatch_01.rmdl
+	mdl/levels_terrain/mp_rr_divided_lookdev/wilds_veg_mosspatch_02.rmdl
+	mdl/levels_terrain/mp_rr_divided_lookdev/wilds_veg_mosspatch_03.rmdl
+	mdl/levels_terrain/mp_rr_divided_lookdev/wilds_veg_mosspatch_03_large.rmdl
+	mdl/levels_terrain/mp_rr_divided_lookdev/divided_garlic_flower_03.rmdl
+	mdl/levels_terrain/mp_rr_divided_lookdev/wilds_veg_mossclumphang_02.rmdl
+	mdl/levels_terrain/mp_rr_divided_lookdev/divided_garlic_flower_01_group1.rmdl
+	mdl/levels_terrain/mp_rr_divided_lookdev/divided_wetlands_lookdev_seaweed_01.rmdl
+	mdl/rocks/divided_rocks_eroded_cluster_02.rmdl
+	mdl/rocks/divided_rocks_eroded_cluster_03.rmdl
+	mdl/foliage/grass_dead_bent_01/grass_dead_bent_01.rmdl
+	mdl/foliage/grass_dead_bent_01/grass_dead_bent_02.rmdl
+	mdl/foliage/grass_lily_shrub_03_wind.rmdl
+	mdl/foliage/divided_grass_tall_01.rmdl
+	mdl/foliage/divided_grass_tall_02.rmdl
+	mdl/foliage/divided_grass_short_01.rmdl
+	mdl/foliage/divided_grass_short_02.rmdl
+	mdl/foliage/divided_barren_grass_03.rmdl
+	mdl/foliage/divided_eternal_acres_trimmed_grass_01.rmdl
+	mdl/foliage/divided_barren_grass_01.rmdl
+	mdl/foliage/foliage_ground_plants_01.rmdl
+	mdl/foliage/flowers_ground_01_wind.rmdl
+	mdl/foliage/flowers_ground_01.rmdl
+	mdl/foliage/flowers_ground_02_wind.rmdl
+	mdl/foliage/flowers_ground_02.rmdl
+	mdl/foliage/icelandic_ground_plant_02_wind.rmdl
+	mdl/foliage/twigs_dead_brown_01/twigs_dead_brown_01.rmdl
+	mdl/foliage/plant_tropical_ground_leafy_01_animated.rmdl
+	mdl/foliage/plant_lauae_fern_02_wind.rmdl
+	mdl/foliage/mushroom_trumpet_03.rmdl
+	mdl/foliage/tropics_ivy_green_01.rmdl
+	mdl/foliage/tropics_ivy_green_03.rmdl
+	mdl/foliage/tropics_leaves_spread_01.rmdl
+	mdl/decals/grime_dirty_floor_decal_01.rmdl
+	mdl/industrial/landing_mat_metal.rmdl
+	mdl/industrial/landing_mat_metal_01.rmdl
+	mdl/celebration/confetti_01/confetti_scatter_long_01.rmdl
+	mdl/celebration/confetti_01/confetti_scatter_small_01.rmdl
+	mdl/celebration/confetti_01/confetti_scatter_large_01.rmdl
+
+	
+]

@@ -1,0 +1,17 @@
+"mp_rr_freedm_skulltown"
+{
+	assets
+	{
+		minimap overviews\mp_rr_freedm_skulltown
+		fw_zone_imc overviews\mp_rr_freedm_skulltown_zones_imc
+		fw_zone_mil overviews\mp_rr_freedm_skulltown_zones_mil
+	}
+
+	pos_x -12126
+	pos_y 9946
+	scale 5
+	displayDist 2048
+	threatMaxDist 2500
+	threatNearDist 500
+	threatFarDist 2000
+}

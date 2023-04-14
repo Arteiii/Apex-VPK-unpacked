@@ -1,0 +1,21 @@
+models:
+[
+	industrial/traffic_cone_01.rmdl
+	IMC_base/imc_tech_panel_64_01.rmdl
+	beacon/mendoko_wire_cluster_03.rmdl
+	beacon/mendoko_wire_cluster_04.rmdl
+	imc_interior/imc_int_fusebox_01.rmdl
+	IMC_base/conduit_bracket_IMC_02.rmdl
+	IMC_base/conduit_bracket_IMC_04.rmdl
+	IMC_base/imc_tech_smallpanel_48_03.rmdl
+	IMC_base/conduit_str_32_IMC_02.rmdl
+	IMC_base/conduit_str_32_IMC_01.rmdl
+	beacon/beacon_wire_ground_coils_02.rmdl
+	industrial/landing_mat_metal_03.rmdl
+	electricalboxes/fusebox.rmdl	
+	utilities/wires_hanging_64.rmdl
+	rise/catwalk_hanging_wires_01.rmdl
+	mdl/celebration/confetti_01/confetti_scatter_long_01.rmdl
+	mdl/celebration/confetti_01/confetti_scatter_small_01.rmdl
+	mdl/celebration/confetti_01/confetti_scatter_large_01.rmdl
+]

@@ -1,0 +1,228 @@
+resource/ui/menus/social.menu
+{
+	menu
+	{
+		ControlName				Frame
+		wide					f0
+		tall					f0
+		autoResize				0
+		pinCorner				0
+		visible					1
+		enabled					1
+		PaintBackgroundType		0
+		infocus_bgcolor_override	"0 0 0 0"
+		outoffocus_bgcolor_override	"0 0 0 0"
+
+        ScreenFrame
+        {
+            ControlName				Label
+            xpos					0
+            ypos					0
+            wide					%100
+            tall					%100
+            labelText				""
+            //visible				    1
+            //bgcolor_override        "255 255 0 100"
+            //paintbackground         1
+        }
+
+        ScreenBlur
+        {
+            ControlName				Label
+            labelText               ""
+        }
+
+        ToolTip
+        {
+            ControlName				RuiPanel
+            InheritProperties       ToolTip
+            zpos                    999
+        }
+
+		FooterButtons
+		{
+			ControlName				CNestedPanel
+			InheritProperties       FooterButtons
+			ypos_nx_handheld		r70			[$NX || $NX_UI_PC]
+		}
+
+        MatchmakingStatus
+        {
+            ControlName		        RuiPanel
+            InheritProperties		MatchmakingStatus
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	BOTTOM
+            pin_to_sibling_corner	BOTTOM
+        }
+
+        MenuHeader
+        {
+            ControlName				RuiPanel
+			ypos					-48
+            wide					1800
+            tall					208
+            visible				    1
+            rui                     "ui/generic_menu_header.rpak"
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	TOP
+            pin_to_sibling_corner	TOP
+        }
+
+        AltNameList
+        {
+            ControlName				RuiPanel
+			ypos					-894
+			xpos					-630
+            wide					400
+            tall					400
+            visible				    1
+            rui                     "ui/friend_inspect_name_list.rpak"
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	BOTTOM_LEFT //TOP_LEFT
+            pin_to_sibling_corner	TOP_LEFT
+        }
+
+		Decoration
+		{
+			ControlName             RuiPanel
+   			wide					f0
+   			tall                    f0
+	        rui                     "ui/customize_character_menu_decoration.rpak"
+		}
+
+         Logo
+        {
+            ControlName				RuiPanel
+			InheritProperties       Logo
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	TOP_LEFT
+            pin_to_sibling_corner	TOP_LEFT
+        }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        TabsCommon
+        {
+            ControlName				CNestedPanel
+            classname				"TabsCommonClass"
+            xpos                    210
+            ypos                    -144
+            //zpos					1
+            wide					f0
+            tall					44
+            visible					1
+            controlSettingsFile		"resource/ui/menus/panels/tabs_inspect_stats.res"
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	TOP
+            pin_to_sibling_corner	TOP
+        }
+
+        CombinedCard
+        {
+            ControlName			RuiPanel
+
+            xpos                   -85
+            xpos_nx_handheld       -118   [$NX || $NX_UI_PC]
+            ypos                   140
+            ypos_nx_handheld       120    [$NX || $NX_UI_PC]
+            zpos                    2
+			
+            wide					850//800
+            wide_nx_handheld		895//845    [$NX || $NX_UI_PC]
+            tall					850//800
+            tall_nx_handheld		940//890    [$NX || $NX_UI_PC]
+            rui                    "ui/combined_card.rpak"
+            visible					1
+        }
+
+
+        CombinedCardTab
+        {
+            ControlName			RuiPanel
+
+            xpos                    0
+            ypos                    -375
+            ypos_nx_handheld        -433    [$NX || $NX_UI_PC]
+            zpos                    10
+
+            wide					500
+            wide_nx_handheld    	575    [$NX || $NX_UI_PC]
+            tall					44
+            tall_nx_handheld    	45     [$NX || $NX_UI_PC]
+
+            pin_to_sibling          CombinedCard
+            pin_corner_to_sibling   CENTER
+            pin_to_sibling_corner   CENTER
+
+            rui                     "ui/stats_gladiator_card_title_tab.rpak"
+            visible				    1
+        }
+
+        SelectModeButton
+        {
+            ControlName				RuiButton
+            classname               "MenuButton"
+            wide					450
+            tall					55
+            tall_nx_handheld		65     [$NX || $NX_UI_PC]
+            xpos                    710
+            ypos                    162
+            ypos_nx_handheld        115    [$NX || $NX_UI_PC]
+            zpos                    10
+            rui                     "ui/player_stats_dropdown_button.rpak"
+            labelText               ""
+            visible					1
+            cursorVelocityModifier  0.7
+            sound_accept            "UI_Menu_SelectMode_Extend"
+
+            proportionalToParent    1
+        }
+
+
+        SelectSeasonButton
+        {
+            ControlName				RuiButton
+            classname               "MenuButton"
+            wide					450
+            tall					55
+            tall_nx_handheld		65     [$NX || $NX_UI_PC]
+            xpos                    1347
+            ypos                    162
+            ypos_nx_handheld        115    [$NX || $NX_UI_PC]
+            zpos                    10
+            rui                     "ui/player_stats_dropdown_button.rpak"
+            labelText               ""
+            visible					1
+            cursorVelocityModifier  0.7
+            sound_accept            "UI_Menu_SelectMode_Extend"
+
+            proportionalToParent    1
+        }
+
+        StatsSummaryPanel
+        {
+            ControlName				CNestedPanel
+            classname				"TabPanelClass"
+
+            xpos                    -360
+            ypos                    0
+            ypos_nx_handheld        -60   [$NX || $NX_UI_PC]
+            zpos                    10
+
+            wide					%100
+            tall					%100
+            visible					1
+            tabPosition             1
+            controlSettingsFile		"resource/ui/menus/panels/stats_summary.res"
+
+            pin_to_sibling			CombinedCard
+            pin_corner_to_sibling	TOP_LEFT
+            pin_to_sibling_corner	TOP_RIGHT
+        }
+	}
+}

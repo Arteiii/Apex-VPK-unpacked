@@ -1,0 +1,28 @@
+models:
+[
+	mdl/foliage/icelandic_moss_grass_02.rmdl
+	mdl/foliage/icelandic_moss_grass_01.rmdl
+	mdl/foliage/icelandic_ground_plant_01.rmdl
+	mdl/foliage/icelandic_ground_plant_02.rmdl
+	mdl/foliage/grass_burnt_yellow_03.rmdl
+	mdl/foliage/grass_icelandic_01.rmdl
+	mdl/foliage/grass_icelandic_03.rmdl
+	mdl/foliage/grass_icelandic_04.rmdl
+	mdl/foliage/foliage_ground_plants_desertlands.rmdl
+	mdl/foliage/plant_icelandic_02.rmdl
+	mdl/rocks/icelandic_rockcluster_01.rmdl
+	mdl/rocks/icelandic_rockcluster_02.rmdl
+	mdl/foliage/ground_plant_desertlands_01_group_01.rmdl
+	mdl/signs/signage_plates_metal/sign_plate_c.rmdl
+	mdl/rocks/rock_lava_small_moss_desertlands_03.rmdl
+	mdl/foliage/ground_plant_desertlands_01.rmdl
+	mdl/utilities/ceiling_vent_metal.rmdl
+	mdl/foliage/ground_plant_beacon_01.rmdl
+	mdl/rocks/rockcluster_light_01.rmdl
+	mdl/rocks/rockcluster_light_03.rmdl
+	mdl/rubble/rubble_pile_flat_sparse.rmdl
+	mdl/celebration/confetti_01/confetti_scatter_long_01.rmdl
+    mdl/celebration/confetti_01/confetti_scatter_small_01.rmdl
+	mdl/celebration/confetti_01/confetti_scatter_large_01.rmdl
+
+]

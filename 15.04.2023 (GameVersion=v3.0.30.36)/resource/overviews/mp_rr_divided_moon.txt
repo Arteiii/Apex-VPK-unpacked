@@ -1,0 +1,17 @@
+"mp_rr_divided_moon"
+{
+	assets
+	{
+		minimap overviews\mp_rr_divided_moon
+		fw_zone_imc overviews\mp_rr_divided_moon_zones_imc
+		fw_zone_mil overviews\mp_rr_divided_moon_zones_mil
+	}
+
+	pos_x -45000
+	pos_y 43500
+	scale 21
+	displayDist 4096
+	threatMaxDist 2500
+	threatNearDist 500
+	threatFarDist 2000
+}

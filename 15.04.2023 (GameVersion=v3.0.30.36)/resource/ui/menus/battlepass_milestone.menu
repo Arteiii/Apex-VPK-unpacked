@@ -1,0 +1,329 @@
+resource/ui/menus/battlepass_milestone.menu
+{
+	menu
+	{
+		ControlName				Frame
+		xpos					0
+		ypos					0
+		zpos					1
+		wide					f0
+		tall					f0
+		autoResize				0
+		pinCorner				0
+		visible					1
+		enabled					1
+		PaintBackgroundType		0
+		infocus_bgcolor_override	"0 0 0 0"
+		outoffocus_bgcolor_override	"0 0 0 0"
+
+		ScreenFrame
+		{
+			ControlName				Label
+			xpos					0
+			ypos					0
+			wide					f0
+			tall					f0
+			labelText				""
+			visible				    0
+		}
+
+        Vignette
+        {
+            ControlName             ImagePanel
+            InheritProperties       MenuVignette
+        }
+
+		Header
+		{
+			ControlName				RuiPanel
+			classname               "MenuButton"
+			wide					975
+			tall					290
+			xpos					-548
+			ypos                    -82
+			visible				    1
+			rui                     "ui/battle_pass_milestone_header.rpak"
+
+			pin_to_sibling          ScreenFrame
+			pin_corner_to_sibling   TOP
+			pin_to_sibling_corner   TOP_RIGHT
+		}
+
+		ScreenBlur
+		{
+			ControlName				RuiPanel //this isn't showing up properly anyway on PC but it was messing up NX Handheld
+			wide					0
+			tall					0
+			rui                     "ui/screen_blur.rpak"
+			visible					1
+			pin_to_sibling          ScreenFrame
+			pin_corner_to_sibling   CENTER
+			pin_to_sibling_corner   CENTER
+		}
+
+		ModalBackground
+		{
+		   ControlName				RuiPanel
+		   xpos                     -100
+		   wide					    725
+		   tall					    %100
+		   labelText                ""
+		   visible					1
+		   rui                      "ui/battle_pass_milestone_modal_background.rpak"
+
+		   pin_to_sibling			ScreenFrame
+		   pin_corner_to_sibling	TOP_LEFT
+		   pin_to_sibling_corner	TOP_LEFT
+		}
+
+		AwardsList
+		{
+			ControlName				GridButtonListPanel
+			xpos                    -462
+			ypos                    -102
+			tall                    128
+			columns                 5
+			rows                    2
+			buttonSpacing           5
+			scrollbarSpacing        8
+			scrollbarOnLeft         0
+			visible					1
+			tabPosition             1
+
+			ButtonSettings
+			{
+				rui					    "ui/battle_pass_reward_button_v2.rpak"
+				clipRui                 1
+				wide					105
+				tall					105
+				cursorVelocityModifier  0.7
+				sound_focus             "UI_Menu_BattlePass_Level_Focus"
+				sound_accept            ""
+				rightClickEvents		1
+				doubleClickEvents       1
+			}
+
+			pin_to_sibling			ScreenFrame
+			pin_corner_to_sibling	TOP
+			pin_to_sibling_corner	LEFT
+		}
+
+		AwardsHeaderBackground
+		{
+			ControlName				RuiPanel
+			xpos				    0
+			ypos				    -410
+
+			wide					724
+			tall					204
+
+			visible 				1
+			rui						"ui/battle_pass_milestone_header_background.rpak"
+
+			pin_to_sibling			AwardsList
+			pin_corner_to_sibling	CENTER
+			pin_to_sibling_corner	CENTER
+		}
+
+		AwardsHeaderText
+		{
+			ControlName             RuiPanel
+			xpos				    0
+			ypos				    -14
+			visible 				1
+			wide					100%
+			tall					100%
+			rui						"ui/battle_pass_milestone_general_text.rpak"
+
+			pin_to_sibling			AwardsHeaderBackground
+			pin_corner_to_sibling	CENTER
+			pin_to_sibling_corner	CENTER
+		}
+
+		AwardsDescText
+		{
+			ControlName             RuiPanel
+			xpos				    0
+			ypos				    -200
+			ypos_nx_handheld        -230			[$NX || $NX_UI_PC]
+			wide					100%
+			tall					100%
+			visible 				1
+			rui						"ui/battle_pass_milestone_general_text.rpak"
+
+			pin_to_sibling			AwardsList
+			pin_corner_to_sibling	CENTER
+			pin_to_sibling_corner	CENTER
+		}
+
+		LeftToggleButton
+		{
+			ControlName             RuiButton
+            xpos                    -142
+            ypos                    30
+			ypos_nx_handheld        30			[$NX || $NX_UI_PC]
+			visible 				1
+
+			wide					280
+            tall					60
+			rui						"ui/battle_pass_milestone_toggle_button.rpak"
+
+			pin_to_sibling			AwardsHeaderText
+            pin_corner_to_sibling   BOTTOM
+            pin_to_sibling_corner   BOTTOM
+		}
+
+		LeftToggleIndicator
+		{
+			ControlName             RuiPanel
+			xpos				    -170
+			ypos				    30
+			ypos_nx_handheld        30			[$NX || $NX_UI_PC]
+			visible 				1
+			wide					100%
+			tall					100%
+			rui						"ui/battle_pass_milestone_toggle_indicator.rpak"
+
+			pin_to_sibling			LeftToggleButton
+			pin_corner_to_sibling	CENTER
+			pin_to_sibling_corner	CENTER
+		}
+
+		RightToggleButton
+		{
+			ControlName             RuiButton
+            xpos                    142
+            ypos                    30
+			ypos_nx_handheld        30			[$NX || $NX_UI_PC]
+			visible 				1
+
+			wide					280
+            tall					60
+			rui						"ui/battle_pass_milestone_toggle_button.rpak"
+
+			pin_to_sibling			AwardsHeaderText
+            pin_corner_to_sibling   BOTTOM
+            pin_to_sibling_corner   BOTTOM
+		}
+
+		RightToggleIndicator
+		{
+			ControlName             RuiPanel
+			xpos				    170
+			ypos				    30
+			ypos_nx_handheld        30			[$NX || $NX_UI_PC]
+			visible 				1
+			wide					100%
+			tall					100%
+			rui						"ui/battle_pass_milestone_toggle_indicator.rpak"
+
+			pin_to_sibling			RightToggleButton
+			pin_corner_to_sibling	CENTER
+			pin_to_sibling_corner	CENTER
+		}
+
+        PassPurchaseButton
+        {
+            ControlName				RuiButton
+            classname               "MenuButton"
+            xpos                    0
+            ypos                    150
+            zpos                    3
+
+            wide					565
+            tall					111
+            rui                     "ui/battle_pass_milestone_purchase_button.rpak"
+            labelText               ""
+            visible					1
+            cursorVelocityModifier  0.7
+
+            sound_focus             "UI_Menu_Focus_Large"
+            cursorVelocityModifier  0.7
+            proportionalToParent	1
+
+            pin_to_sibling          AwardsList
+            pin_corner_to_sibling   BOTTOM_LEFT
+            pin_to_sibling_corner   BOTTOM_LEFT
+        }
+
+        ContinueButton
+		{
+			ControlName			    RuiButton
+			classname               "MenuButton"
+
+			xpos 					0
+            ypos                    95
+			zpos                    3
+
+			wide				    565
+			tall				    71
+			rui					    "ui/generic_purchase_cancel_button.rpak"
+			labelText               ""
+			visible                 1
+
+			sound_focus             "UI_Menu_Focus_Large"
+			cursorVelocityModifier  0.7
+			proportionalToParent	1
+
+			pin_to_sibling			PassPurchaseButton
+			pin_corner_to_sibling	BOTTOM_LEFT
+			pin_to_sibling_corner	BOTTOM_LEFT
+		}
+
+		LoadscreenImage
+		{
+			ControlName             RuiPanel
+			xpos				    0
+			ypos				    415
+			zpos				    10
+			wide                    818
+			tall                    460
+			visible				    1
+			rui                     "ui/custom_loadscreen_image.rpak"
+
+			pin_to_sibling			Header
+			pin_corner_to_sibling	BOTTOM
+			pin_to_sibling_corner	BOTTOM
+		}
+
+		Rep2DImage
+		{
+			ControlName             RuiPanel
+			xpos				    0
+			ypos				    670
+			zpos				    10
+			wide                    970
+			tall                    890
+			visible				    1
+			rui                     "ui/battle_pass_milestone_static_image.rpak"
+
+			pin_to_sibling			Header
+			pin_corner_to_sibling	BOTTOM
+			pin_to_sibling_corner	BOTTOM
+		}
+
+		UserInfo
+		{
+			ControlName             RuiButton
+			InheritProperties       UserInfo
+			zpos                    13
+
+			pin_to_sibling			ScreenFrame
+			pin_corner_to_sibling	TOP_RIGHT
+			pin_to_sibling_corner	TOP_RIGHT
+		}
+
+		ToolTip
+        {
+            ControlName				RuiPanel
+            InheritProperties       ToolTip
+            zpos                    999
+        }
+
+		FooterButtons
+		{
+			ControlName				CNestedPanel
+			InheritProperties       FooterButtons
+		}
+	}
+}

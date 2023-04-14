@@ -1,0 +1,19 @@
+IsTestMap: false
+
+When: "SERVER"
+Scripts:
+[
+	mp/mp_rr_aqueduct.nut
+]
+
+When: "CLIENT"
+Scripts:
+[
+	mp/cl_mp_rr_aqueduct.nut
+]
+
+When: "CLIENT || SERVER"
+Scripts:
+[
+	mp/sh_mp_rr_aqueduct.nut
+]

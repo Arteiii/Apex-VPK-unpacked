@@ -1,0 +1,7 @@
+models:
+[
+	mdl/celebration/modes_victory_podium_01/TDM_podium_spotlight_godray_01.rmdl
+	mdl/celebration/confetti_01/confetti_scatter_long_01.rmdl
+	mdl/celebration/confetti_01/confetti_scatter_small_01.rmdl
+	mdl/celebration/confetti_01/confetti_scatter_large_01.rmdl
+]
