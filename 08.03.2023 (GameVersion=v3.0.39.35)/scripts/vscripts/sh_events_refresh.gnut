@@ -1,0 +1,49 @@
+                   
+global function EventRefresh_SharedInit
+
+#if SERVER
+                                                        
+#endif
+
+void function EventRefresh_SharedInit()
+{
+	#if SERVER
+		                                                                                          
+	#endif          
+}
+
+
+#if SERVER
+                                                                                      
+                                                                                     
+                                                                       
+ 
+	                                                                                              
+	                               
+		      
+
+	                      
+	                                                                              
+	                                                                               
+	                                                               
+
+	                                                                                                        
+	                                                                                                     
+
+	                                                                                                       
+	                                                                
+
+	                                            
+	                                             
+
+	                                   
+	                                                                   
+ 
+
+
+                                                                                           
+ 
+	                                                                                
+ 
+#endif          
+                         

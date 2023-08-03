@@ -1,0 +1,61 @@
+resource/ui/menus/rtk_inspect.menu
+{
+	menu
+	{
+		ControlName				Frame
+		wide					f0
+		tall					f0
+		autoResize				0
+		pinCorner				0
+		visible					1
+		enabled					1
+		PaintBackgroundType		0
+		infocus_bgcolor_override	"0 0 0 0"
+		outoffocus_bgcolor_override	"0 0 0 0"
+
+		ScreenFrame
+		{
+		    ControlName				Label
+		    xpos					0
+		    ypos					0
+		    wide					%100
+		    tall					%100
+		    labelText				""
+		}
+//
+//		FooterButtons
+//		{
+//			ControlName				CNestedPanel
+//			InheritProperties       FooterButtons
+//			ypos_nx_handheld		r70			[$NX || $NX_UI_PC]
+//		}
+//
+//		MatchmakingStatus
+//		{
+//		    ControlName		        RuiPanel
+//		    InheritProperties		MatchmakingStatus
+//
+//		    pin_to_sibling			ScreenFrame
+//		    pin_corner_to_sibling	BOTTOM
+//		    pin_to_sibling_corner	BOTTOM
+//		}
+		SideBars
+        {
+            ControlName				RuiPanel
+            wide                    f0
+            tall                    f0
+            rui                     "ui/lobby_ultrawide_sidebars.rpak"
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	CENTER
+            pin_to_sibling_corner	CENTER
+        }
+	    PlayerStats
+	    {
+	        ControlName             RTKVGUIPanel
+	        wide                    %100
+	        tall                    %100
+	        prefab                  "ui_rtk/stats_menu/stats_screen.rpak"
+	    }
+	}
+}

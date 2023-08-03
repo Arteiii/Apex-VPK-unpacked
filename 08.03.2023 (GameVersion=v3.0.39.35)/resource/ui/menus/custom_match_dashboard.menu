@@ -1,0 +1,225 @@
+resource/ui/menus/custom_match_dashboard.menu
+{
+	menu
+	{
+		ControlName				Frame
+		xpos					0
+		ypos					0
+		zpos					3
+		wide					f0
+		tall					f0
+		autoResize				0
+		pinCorner				0
+		visible					1
+		enabled					1
+		PaintBackgroundType		1
+		infocus_bgcolor_override	"64 64 64 0"
+		outoffocus_bgcolor_override	"64 64 64 0"
+
+        ScreenFrame
+        {
+            ControlName				Label
+            wide					%100
+            tall					%100
+            labelText				""
+            visible				    0
+            bgcolor_override        "255 255 0 10"
+            paintbackground         1
+        }
+
+        ScreenBlur
+        {
+            ControlName				Label
+            labelText               ""
+            visible                 1
+        }
+		SideBars
+        {
+            ControlName				RuiPanel
+            wide                    f0
+            tall                    f0
+            rui                     "ui/lobby_ultrawide_sidebars.rpak"
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	CENTER
+            pin_to_sibling_corner	CENTER
+        }
+
+	    DashboardPanel
+	    {
+	        ControlName				Label
+			xpos                    0
+			ypos                    -48
+			wide					%100
+			tall					96
+	        labelText				""
+
+	        pin_to_sibling          ScreenFrame
+	        pin_corner_to_sibling   TOP
+	        pin_to_sibling_corner   TOP
+	    }
+
+		TabsBackground
+	    {
+            ControlName				RuiPanel
+	        InheritProperties		TabsBackgroundTallWithCapstone
+	        pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	TOP
+            pin_to_sibling_corner	TOP
+	    }
+		TabsCommon
+		{
+			ControlName				CNestedPanel
+			classname				"TabsCommonClass"
+			zpos					3
+			wide					f0
+			tall					84
+			visible					1
+			controlSettingsFile		"resource/ui/menus/panels/common_tabs_tall.res"
+			clip					0
+
+			pin_to_sibling			ScreenFrame
+			pin_corner_to_sibling	TOP
+			pin_to_sibling_corner	TOP
+		}
+
+	    MatchCountdown
+	    {
+            ControlName				RuiButton
+			xpos                    0
+			zpos					4
+			wide					460
+			tall					83
+			visible                 0
+
+	        pin_to_sibling          TabsCommon
+	        pin_corner_to_sibling   RIGHT
+	        pin_to_sibling_corner   RIGHT
+
+	        rui                     "ui/custom_match_countdown_header.rpak"
+	    }
+
+	    SummaryPanel
+	    {
+			ControlName				CNestedPanel
+			ypos                    24
+			wide					1826
+			tall					816
+			visible				    1
+
+	        pin_to_sibling          DashboardPanel
+	        pin_corner_to_sibling   TOP
+	        pin_to_sibling_corner   BOTTOM
+
+            controlSettingsFile     "resource/ui/menus/panels/custom_match_summary.res"
+	    }
+
+	    SettingsPanel
+        {
+            ControlName				CNestedPanel
+            ypos                    24
+            wide					%100
+            tall					816
+            visible				    0
+
+            pin_to_sibling          DashboardPanel
+            pin_corner_to_sibling   TOP
+            pin_to_sibling_corner   BOTTOM
+
+            controlSettingsFile     "resource/ui/menus/panels/custom_match_settings.res"
+        }
+
+		LobbyPanel
+	    {
+	        ControlName             CNestedPanel
+			ypos                    0
+			wide					%100
+			tall					%100
+			visible                 1
+			clipRui                 0
+
+	        pin_to_sibling          ScreenFrame
+	        pin_corner_to_sibling   CENTER
+	        pin_to_sibling_corner   CENTER
+
+            controlSettingsFile     "resource/ui/menus/panels/custom_match_lobby.res"
+	    }
+
+	    ShareTokenPanel
+        {
+            ControlName				CNestedPanel
+            xpos					-24
+            ypos					-20
+            zpos                    100
+            wide                    260
+            tall					48
+            visible					0
+            enabled 				1
+            clip                    0
+
+            pin_to_sibling			TabsBackground
+            pin_corner_to_sibling	TOP_RIGHT
+            pin_to_sibling_corner	TOP_RIGHT
+
+            controlSettingsFile     "resource/ui/menus/panels/custom_match_share_token.res"
+        }
+
+         AutoCloseLobbyLabel
+        {
+            ControlName				Label
+            wide					300
+            tall					48
+            xpos                    -60
+            ypos                    -20
+            zpos                    120
+            labelText				"#CUSTOMMATCH_LOBBY_AUTO_CLOSING"
+            font                    Default_48
+            textAlignment	        east
+            visible				    0
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling   TOP_RIGHT
+            pin_to_sibling_corner	TOP_RIGHT
+        }
+
+        AutoCloseLobbyTimer
+        {
+            ControlName				Label
+            wide					50
+            tall					48
+            xpos                    0
+            ypos                    0
+            zpos                    120
+            labelText				""
+            font                    Default_48
+            visible				    0
+
+            pin_to_sibling			AutoCloseLobbyLabel
+            pin_corner_to_sibling   TOP_LEFT
+            pin_to_sibling_corner	TOP_RIGHT
+        }
+
+	    MatchmakingStatus
+	    {
+	        ControlName		        RuiPanel
+	        InheritProperties		MatchmakingStatus
+			zpos					100
+
+	        pin_to_sibling			ScreenFrame
+	        pin_corner_to_sibling	BOTTOM
+	        pin_to_sibling_corner	BOTTOM
+	    }
+
+        ToolTip
+        {
+            ControlName				RuiPanel
+            InheritProperties       ToolTip
+        }
+		FooterButtons
+	    {
+	        ControlName				CNestedPanel
+	        InheritProperties       FooterButtons
+	        ypos					r55
+	    }
+	}
+}

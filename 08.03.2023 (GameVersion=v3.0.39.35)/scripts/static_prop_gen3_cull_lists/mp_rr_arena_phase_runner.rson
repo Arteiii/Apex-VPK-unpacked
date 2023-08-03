@@ -1,0 +1,20 @@
+models:
+[
+	mdl/foliage/icelandic_moss_grass_01.rmdl
+	mdl/rocks/icelandic_rockcluster_03.rmdl
+	mdl/foliage/tree_brush_yellow_large_03.rmdl
+	mdl/foliage/tree_acacia_small_01.rmdl
+	mdl/rocks/icelandic_rockcluster_01.rmdl
+	mdl/rocks/icelandic_rockcluster_02.rmdl
+	mdl/rocks/icelandic_snow_rockcluster_02.rmdl
+	mdl/beacon/beacon_wire_ground_coils_03.rmdl
+	mdl/beacon/beacon_wire_ground_coils_02.rmdl
+	mdl/industrial/landing_mat_metal_02.rmdl
+	mdl/foliage/icelandic_ground_plant_01.rmdl
+	mdl/industrial/landing_mat_metal_03_large.rmdl
+	mdl/utilities/wire_ground_coils_02.rmdl
+	mdl/foliage/flowers_ground_01.rmdl
+	mdl/industrial/landing_mat_metal_03.rmdl
+	mdl/industrial/traffic_cone_01.rmdl
+
+]

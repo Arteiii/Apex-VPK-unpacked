@@ -1,0 +1,23 @@
+{
+	EntCateg_Unknown: {}
+	EntCateg_ScriptUnknown: {}
+	EntCateg_CodeCreated: {}
+
+	EntCateg_Loot:
+	{
+		files:
+		[
+			survival_loot.gnut
+		]
+	}
+
+	EntCateg_Legends:
+	{
+		files:
+		[
+			weapons/mp_ability*
+		]
+	}
+
+	// additional categories...
+}

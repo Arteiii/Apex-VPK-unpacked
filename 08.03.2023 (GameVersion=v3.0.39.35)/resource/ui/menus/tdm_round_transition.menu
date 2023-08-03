@@ -1,0 +1,74 @@
+resource/ui/menus/tdm_round_transition.menu
+{
+	menu
+	{
+		ControlName				Frame
+		xpos					0
+		ypos					0
+		zpos					3
+		wide					f0
+		tall					f0
+		autoResize				0
+		pinCorner				0
+		visible					1
+		enabled					1
+		PaintBackgroundType		0
+		infocus_bgcolor_override	"0 0 0 0"
+		outoffocus_bgcolor_override	"0 0 0 0"
+
+		ScreenBlur
+		{
+		   ControlName              RuiPanel
+		   wide                     %100
+		   tall                     %100
+		   rui                      "ui/screen_blur.rpak"
+		   visible                  1
+
+		   ruiArgs
+		   {
+		        darkenAlpha         0.7
+		        useAnimation        1
+		        animateDuration     0.25
+		   }
+
+		}
+
+        ToolTip
+        {
+            ControlName				RuiPanel
+            InheritProperties       ToolTip
+            zpos                    999
+        }
+		ScreenFrame
+        {
+            ControlName				Label
+            xpos					0
+            ypos					0
+            wide					%100
+            tall					%100
+            labelText				""
+            visible				    0
+            bgcolor_override        "0 0 0 0"
+            paintbackground         0
+        }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//jmasse: removing to save memory
+//		TDM_ScoreboardPanel
+//        {
+//            ControlName				CNestedPanel
+//            wide			        1920
+//            tall			        1080
+//            xpos                    0
+//            ypos                    0
+//            zpos                    1
+//            visible                 1
+//            enabled                 1
+//            controlSettingsFile		"resource/ui/menus/panels/teams_scoreboard.res"
+//            xcounterscroll			0.0
+//            ycounterscroll			0.0
+//            pin_to_sibling			ScreenFrame
+//            pin_corner_to_sibling	CENTER
+//            pin_to_sibling_corner	CENTER
+//        }
+	}
+}

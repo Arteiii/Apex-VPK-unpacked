@@ -1,0 +1,19 @@
+IsTestMap: false
+
+When: "SERVER"
+Scripts:
+[
+	mp/mp_rr_arena_phase_runner.nut
+]
+
+When: "CLIENT"
+Scripts:
+[
+	mp/cl_mp_rr_arena_phase_runner.nut
+]
+
+When: "CLIENT || SERVER"
+Scripts:
+[
+	mp/sh_mp_rr_arena_phase_runner.nut
+]

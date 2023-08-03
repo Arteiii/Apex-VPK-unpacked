@@ -1,0 +1,77 @@
+models:
+[
+	//HEALTH UPDATE OPTIMIZATIONS //shawbs
+
+	//WIRES
+	mdl/utilities/wires_ground_coils_01.rmdl
+	mdl/beacon/mendoko_wire_cluster_03.rmdl
+    mdl/beacon/beacon_wire_ground_coils_02.rmdl
+    mdl/beacon/beacon_wire_ground_coils_03.rmdl
+    mdl/beacon/beacon_wire_ground_coils_04.rmdl
+    mdl/beacon/mendoko_wire_ground_coils_02.rmdl
+    mdl/beacon/mendoko_wire_ground_coils_03.rmdl
+    mdl/beacon/mendoko_wire_ground_coils_04.rmdl
+    mdl/beacon/mendoko_wires_ground_coils_01.rmdl
+    mdl/mendoko/mendoko_wire_ground_coils_02.rmdl
+    mdl/mendoko/mendoko_wire_ground_coils_03.rmdl
+    mdl/utilities/wire_ground_coils_02.rmdl
+    mdl/utilities/wire_ground_coils_03.rmdl
+
+    //FOLIAGE
+    mdl/foliage/tree_brush_yellow_large_01.rmdl
+    mdl/foliage/tree_brush_yellow_large_02.rmdl
+	mdl/foliage/tree_brush_yellow_large_03.rmdl
+    mdl/foliage/icelandic_moss_grass_01.rmdl
+	mdl/foliage/icelandic_moss_grass_02.rmdl
+    mdl/foliage/icelandic_ground_plant_01.rmdl
+    mdl/foliage/icelandic_ground_plant_02.rmdl
+    mdl/foliage/icelandic_ground_plant_03.rmdl
+    mdl/foliage/grass_burnt_yellow_01.rmdl
+    mdl/foliage/grass_burnt_yellow_02.rmdl
+    mdl/foliage/grass_burnt_yellow_03.rmdl
+    mdl/foliage/grass_icelandic_01.rmdl
+    mdl/foliage/grass_icelandic_02.rmdl
+    mdl/foliage/grass_icelandic_03.rmdl
+    mdl/foliage/grass_icelandic_04.rmdl
+    mdl/foliage/ground_plant_desertlands_01.rmdl
+    mdl/foliage/foliage_ground_plants_desertlands.rmdl
+    mdl/foliage/plant_icelandic_02.rmdl
+    mdl/foliage/ground_plant_desertlands_01_group_01.rmdl
+    mdl/foliage/ground_plant_beacon_01.rmdl
+    mdl/foliage/ground_plant_beacon_02.rmdl
+    mdl/foliage/ground_plant_beacon_03.rmdl
+    mdl/foliage/tree_acacia_small_01.rmdl
+
+    //ROCKS
+    mdl/rocks/rockcluster_light_01.rmdl
+    mdl/rocks/rockcluster_light_03.rmdl
+    mdl/rocks/icelandic_rockcluster_01.rmdl
+    mdl/rocks/icelandic_rockcluster_02.rmdl
+    mdl/rocks/icelandic_rockcluster_03.rmdl
+    mdl/rocks/rock_lava_small_moss_desertlands_03.rmdl
+    mdl/rocks/rock_lava_cluster_desertlands_01.rmdl
+    mdl/rocks/rock_lava_cluster_desertlands_02.rmdl
+    mdl/rocks/rock_lava_cluster_desertlands_03.rmdl
+
+    //OTHER DEBRIS
+    mdl/utilities/ceiling_vent_metal.rmdl
+    mdl/signs/signage_plates_metal/sign_plate_c.rmdl
+    mdl/rubble/rubble_pile_flat_sparse.rmdl
+    mdl/celebration/confetti_01/confetti_scatter_long_01.rmdl
+    mdl/celebration/confetti_01/confetti_scatter_small_01.rmdl
+    mdl/celebration/confetti_01/confetti_scatter_large_01.rmdl
+    mdl/industrial/landing_mat_metal_01.rmdl
+    mdl/industrial/landing_mat_metal_03.rmdl
+    mdl/colony/box_cardboard_flat_01.rmdl
+    mdl/desertlands/construction_bldg_wood_debris_01.rmdl
+    mdl/industrial/traffic_cone_01.rmdl
+    mdl/industrial/tripod_cone_v1_high_on.rmdl
+    mdl/beacon/modular_hose_yellow_128_bend_01.rmdl
+    mdl/beacon/modular_hose_yellow_128_01.rmdl
+    mdl/beacon/modular_hose_yellow_128_02.rmdl
+    mdl/beacon/modular_hose_yellow_32_01.rmdl
+    mdl/beacon/generator_fan_house_cap_01.rmdl
+    mdl/desertlands/road_plate_metal_64_single_01.rmdl
+    mdl/desertlands/road_plate_metal_192_double_01.rmdl
+    mdl/desertlands/road_plate_metal_128_single_01.rmdl
+]

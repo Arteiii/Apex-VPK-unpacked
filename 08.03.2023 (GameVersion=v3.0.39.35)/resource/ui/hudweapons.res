@@ -1,0 +1,3 @@
+"Resource/UI/HudWeapons.res"
+{
+}
