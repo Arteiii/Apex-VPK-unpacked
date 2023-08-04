@@ -1,0 +1,417 @@
+global function Lobby_AddLocalPlayer
+global function AddCallback_OnPlayerAddedToLobby
+global function Lobby_SetBannerSkin
+#if DEV
+global function DEV_SetLobbyBannerSkin
+#endif
+
+                    
+global function Lobby_OnReadyFX
+      
+
+                                                                      
+const int LOBBY_BANNER_DEFAULT_SKIN_INDEX = 0
+const int LOBBY_BANNER_ARENAS_SKIN_INDEX = 1
+const int LOBBY_BANNER_CONTROL_SKIN_INDEX = 2
+const int LOBBY_BANNER_LTM_SKIN_INDEX = 3
+const int LOBBY_BANNER_FREEDM_SKIN_INDEX = 4
+
+                    
+const int LOBBY_BANNER_HITMAN_DEFAULT_SKIN_INDEX = 6
+
+const asset TARGET_CHEST_EFFECT_ASSET = $"P_lobby_s17_target_chest_impacts"
+const asset TARGET_HEAD_EFFECT_ASSET = $"P_lobby_s17_target_head_impacts"
+
+struct TargetFXInfo
+{
+	int particleSystemIndex
+	vector origin
+	vector angles
+	float delay
+}
+
+const asset S17_NN_FALLING_FOG = $"P_lobby_s17_fog_falling"
+const asset S17_NN_FLOOR_FOG = $"P_lobby_s17_fog_floor"
+const asset S17_NN_LASERS = $"P_lobby_s17_laser_show"
+
+const string S17_FOG_FALLING_LEFT_SCRIPTNAME = "vfx_falling_fog_left"
+const string S17_FOG_FALLING_RIGHT_SCRIPTNAME = "vfx_falling_fog_right"
+const string S17_FOG_FLOOR_LEFT_SCRIPTNAME = "vfx_falling_fog_floor_left"
+const string S17_FOG_FLOOR_RIGHT_SCRIPTNAME = "vfx_falling_fog_floor_right"
+
+const string S17_LASER_SHOW_SCRIPTNAME = "vfx_laser_show_"
+      
+
+
+
+struct
+{
+	array<void functionref( entity )> onPlayerAddedToLobbyCallbacks
+
+	array<entity> lobbyBanners
+	#if DEV
+		bool overrideLobbyBanner = false
+	#endif
+
+                     
+	array < TargetFXInfo > targetFXInfoArray
+	array < TargetFXInfo > laserFXInfoArray
+	float readyEffectsCooldown = 0
+       
+
+} file
+
+void function Lobby_AddLocalPlayer()
+{
+	entity player = GetLocalClientPlayer()
+	Assert( IsValid( player ) )
+
+	player.FreezeControlsOnClient()
+	player.HideCrosshairNames()
+
+	SetStandardAbilityBindingsForPilot( player )
+	RefreshPresentationType()
+
+                 
+	                                                                                        
+	                                                                    
+	                                                      
+	RunUIScript( "Lobby_EnableMinimapCoordsOnConnect", player.GetPlayerName() )
+      
+
+	foreach ( func in file.onPlayerAddedToLobbyCallbacks )
+		func( player )
+
+	CacheLobbyBannerEnt()
+
+                    
+	CacheHitmanFx()
+	CacheNeonNetworkFx()
+      
+}
+
+void function AddCallback_OnPlayerAddedToLobby( void functionref( entity ) onPlayerAddedToLobbyCallback )
+{
+	Assert( ! ( file.onPlayerAddedToLobbyCallbacks.contains( onPlayerAddedToLobbyCallback ) ), "Attempted to add same callback to onPlayerAddedToLobbyCallbacks twice." )
+
+	file.onPlayerAddedToLobbyCallbacks.append( onPlayerAddedToLobbyCallback )
+}
+
+void function CacheLobbyBannerEnt()
+{
+	file.lobbyBanners = GetEntArrayByScriptName( "lobby_banner" )
+	PrecacheParticleSystem( $"P_s14_HW_eye" )
+}
+
+                    
+void function CacheHitmanFx()
+{
+	if ( IsHitmanEventActive() )
+	{
+		PrecacheParticleSystem ( TARGET_CHEST_EFFECT_ASSET )
+		PrecacheParticleSystem ( TARGET_HEAD_EFFECT_ASSET )
+
+		                                                                           
+		TargetFXInfo leftHeadShot
+		leftHeadShot.particleSystemIndex = GetParticleSystemIndex( TARGET_HEAD_EFFECT_ASSET )
+		leftHeadShot.origin = <-67.25, 716.25, 114>
+		leftHeadShot.angles = < 90, -90 ,0>
+		file.targetFXInfoArray.append( leftHeadShot )
+
+		TargetFXInfo leftBodyShot
+		leftBodyShot.particleSystemIndex = GetParticleSystemIndex( TARGET_CHEST_EFFECT_ASSET )
+		leftBodyShot.origin = <-67.25, 716.25, 85>
+		leftBodyShot.angles = < 90, -90, 0>
+		file.targetFXInfoArray.append( leftBodyShot )
+		file.targetFXInfoArray.append( leftBodyShot )
+
+		TargetFXInfo rightHeadShot
+		rightHeadShot.particleSystemIndex = GetParticleSystemIndex( TARGET_HEAD_EFFECT_ASSET )
+		rightHeadShot.origin = <67.25, 716.25, 114>
+		rightHeadShot.angles = < 90, -90, 0>
+		file.targetFXInfoArray.append( rightHeadShot )
+
+		TargetFXInfo rightBodyShot
+		rightBodyShot.particleSystemIndex = GetParticleSystemIndex( TARGET_CHEST_EFFECT_ASSET )
+		rightBodyShot.origin = <67.25, 716.25, 85>
+		rightBodyShot.angles = < 90, -90, 0>
+		file.targetFXInfoArray.append( rightBodyShot )
+		file.targetFXInfoArray.append( rightBodyShot )
+
+	}
+}
+
+void function CacheNeonNetworkFx()
+{
+	if ( IsNeonNetworkEventActive() )
+	{
+		PrecacheParticleSystem ( S17_NN_FALLING_FOG )
+		PrecacheParticleSystem ( S17_NN_FLOOR_FOG )
+		PrecacheParticleSystem ( S17_NN_LASERS )
+
+		array< entity > fogFallingLeftEnts = GetEntArrayByScriptName( S17_FOG_FALLING_LEFT_SCRIPTNAME )
+		if ( fogFallingLeftEnts.len() == 1 )
+		{
+			TargetFXInfo fxInfo
+			fxInfo.particleSystemIndex = GetParticleSystemIndex( S17_NN_FALLING_FOG )
+			fxInfo.origin = fogFallingLeftEnts[0].GetOrigin() + <0, 0, 1350>
+			fxInfo.angles = fogFallingLeftEnts[0].GetAngles()
+			file.targetFXInfoArray.append( fxInfo )
+		}
+
+		array< entity > fogFallingRightEnts = GetEntArrayByScriptName( S17_FOG_FALLING_RIGHT_SCRIPTNAME )
+		if ( fogFallingRightEnts.len() == 1 )
+		{
+			TargetFXInfo fxInfo
+			fxInfo.particleSystemIndex = GetParticleSystemIndex( S17_NN_FALLING_FOG )
+			fxInfo.origin = fogFallingRightEnts[0].GetOrigin() + <0, 0, 1350>
+			fxInfo.angles = fogFallingRightEnts[0].GetAngles()
+			file.targetFXInfoArray.append( fxInfo )
+		}
+
+		array< entity > fogFloorLeftEnts = GetEntArrayByScriptName( S17_FOG_FLOOR_LEFT_SCRIPTNAME )
+		if ( fogFloorLeftEnts.len() == 1 )
+		{
+			TargetFXInfo fxInfo
+			fxInfo.particleSystemIndex = GetParticleSystemIndex( S17_NN_FLOOR_FOG )
+			fxInfo.origin = fogFloorLeftEnts[0].GetOrigin() + <0, 0, 1350>
+			fxInfo.angles = fogFloorLeftEnts[0].GetAngles()
+			fxInfo.delay = 3.5
+			file.targetFXInfoArray.append( fxInfo )
+		}
+
+		array< entity > fogFloorRightEnts = GetEntArrayByScriptName( S17_FOG_FLOOR_RIGHT_SCRIPTNAME )
+		if ( fogFloorRightEnts.len() == 1 )
+		{
+			TargetFXInfo fxInfo
+			fxInfo.particleSystemIndex = GetParticleSystemIndex( S17_NN_FLOOR_FOG )
+			fxInfo.origin = fogFloorRightEnts[0].GetOrigin() + <0, 0, 1350>
+			fxInfo.angles = fogFloorRightEnts[0].GetAngles()
+			fxInfo.delay = 3.5
+			file.targetFXInfoArray.append( fxInfo )
+		}
+
+		array< entity > laserEnts = GetEntArrayByScriptName( S17_LASER_SHOW_SCRIPTNAME + 0 )
+		if ( laserEnts.len() == 1 )
+		{
+			TargetFXInfo fxInfo
+			fxInfo.particleSystemIndex = GetParticleSystemIndex( S17_NN_LASERS )
+			fxInfo.origin = laserEnts[0].GetOrigin() + <0, 0, 1350>
+			fxInfo.angles = laserEnts[0].GetAngles()
+			file.laserFXInfoArray.append( fxInfo )
+		}
+
+		                               
+		 
+			                                                                                    
+			                           
+			 
+				                   
+				                                                                    
+				                                                       
+				                                        
+				                                      
+			 
+		   
+	}
+}
+
+void function Lobby_OnReadyFX()
+{
+
+	if ( IsHitmanEventActive() )
+	{
+		LobbyHitmanReadyFX()
+	}
+
+	if ( IsNeonNetworkEventActive() )
+	{
+		NeonNetworkReadyFX()
+	}
+}
+
+void function NeonNetworkReadyFX()
+{
+	if ( file.targetFXInfoArray.len() == 0 )
+		return
+
+	if ( file.laserFXInfoArray.len() == 0 )
+		return
+
+	float now = ClientTime()
+
+	if ( now < (file.readyEffectsCooldown + 10.0))
+		return
+
+	file.readyEffectsCooldown = now
+
+	              
+	thread function() : ()
+	{
+		array<int> effectHandles
+		OnThreadEnd(
+			function() : ( effectHandles )
+			{
+				foreach ( effectHandle in effectHandles )
+				{
+					if ( EffectDoesExist( effectHandle ) )
+						EffectStop ( effectHandle, false, true )
+				}
+			}
+		)
+
+		foreach ( targetFXInfo in file.targetFXInfoArray )
+		{
+			if ( targetFXInfo.delay != 0 )
+				wait targetFXInfo.delay
+
+			effectHandles.append( StartParticleEffectInWorldWithHandle( targetFXInfo.particleSystemIndex, targetFXInfo.origin, targetFXInfo.angles) )
+		}
+
+		wait 10.0
+	}()
+
+	             
+	thread function() : ()
+	{
+		array<int> effectHandles
+		OnThreadEnd(
+			function() : ( effectHandles )
+			{
+				foreach ( effectHandle in effectHandles )
+				{
+					if ( EffectDoesExist( effectHandle ) )
+						EffectStop ( effectHandle, false, true )
+				}
+			}
+		)
+
+		foreach ( targetFXInfo in file.laserFXInfoArray )
+		{
+			effectHandles.append( StartParticleEffectInWorldWithHandle( targetFXInfo.particleSystemIndex, targetFXInfo.origin, targetFXInfo.angles) )
+  			        
+		}
+
+		wait 10.0
+	}()
+}
+
+void function LobbyHitmanReadyFX()
+{
+	if ( file.targetFXInfoArray.len() == 0 )
+		return
+
+	float now = ClientTime()
+
+	if ( now < (file.readyEffectsCooldown + 10.0))
+		return
+
+	file.readyEffectsCooldown = now
+
+	thread function() : ()
+	{
+		array<int> effectHandles
+		OnThreadEnd(
+			function() : ( effectHandles )
+			{
+				foreach ( effectHandle in effectHandles )
+				{
+					if ( EffectDoesExist( effectHandle ) )
+						EffectStop ( effectHandle, false, true )
+				}
+			}
+		)
+
+		file.targetFXInfoArray.randomize()
+		int attempts  = 4
+		table< int, bool > particleSystemIndexHasPlayedTable
+
+		                                                                   
+		                                                                                                            
+		EmitUISound( "UI_Menu_DressedToKill_ReadyUp_1P" )
+		for ( int i=0; i < attempts; i++ )
+		{
+			foreach ( targetFXInfo in file.targetFXInfoArray )
+			{
+				                                                                                                            
+				if ( RandomFloat(1.0) > 0.2 || ( i == (attempts - 1) && !(targetFXInfo.particleSystemIndex in particleSystemIndexHasPlayedTable) ) )
+				{
+					particleSystemIndexHasPlayedTable[targetFXInfo.particleSystemIndex] <- true
+					effectHandles.append( StartParticleEffectInWorldWithHandle( targetFXInfo.particleSystemIndex, targetFXInfo.origin, targetFXInfo.angles) )
+				}
+				wait RandomFloatRange(0.075, 0.09)	                                                        
+			}
+			wait 0.017
+		}
+		wait 5.0
+	}()
+}
+      
+
+void function Lobby_SetBannerSkin( string playlist )
+{
+	if( file.lobbyBanners.len() == 0 )
+	{
+		                                        
+		CacheLobbyBannerEnt()
+
+		if( file.lobbyBanners.len() == 0 )
+		{
+			Warning( "Lobby_SetBannerSkin - No lobby_banner entity found!" )
+			return
+		}
+	}
+
+	string playlistName = GetParty().playlistName
+
+                     
+		int skinIndex =  IsHitmanEventActive()  ? LOBBY_BANNER_HITMAN_DEFAULT_SKIN_INDEX : LOBBY_BANNER_DEFAULT_SKIN_INDEX
+      
+                                                 
+       
+
+	if ( GetPlaylistVarBool( playlistName, "is_limited_mode", false ) )
+		skinIndex = LOBBY_BANNER_LTM_SKIN_INDEX
+                        
+                                                                                          
+                                            
+       
+                         
+	else if ( playlist != "" && GetPlaylistGamemodeByIndex( playlist, 0 ) == GAMEMODE_CONTROL )
+		skinIndex = LOBBY_BANNER_CONTROL_SKIN_INDEX
+       
+                        
+	else if ( playlist != "" && GetPlaylistGamemodeByIndex( playlist, 0 ) == GAMEMODE_FREEDM )
+		skinIndex = LOBBY_BANNER_FREEDM_SKIN_INDEX
+       
+
+	#if DEV
+		if ( file.overrideLobbyBanner )
+			return
+	#endif
+
+	Lobby_SetBannerSkinInternal ( skinIndex )
+}
+
+void function Lobby_SetBannerSkinInternal( int skinIndex )
+{
+	foreach ( lobbyBanner in file.lobbyBanners )
+	{
+		if ( IsValid(lobbyBanner) )
+			lobbyBanner.SetSkin( skinIndex )
+	}
+}
+
+#if DEV
+void function DEV_SetLobbyBannerSkin( int i )
+{
+	if ( i == -1 )
+	{
+		file.overrideLobbyBanner = false
+		return
+	}
+
+	Lobby_SetBannerSkinInternal( i )
+	file.overrideLobbyBanner = true
+}
+#endif

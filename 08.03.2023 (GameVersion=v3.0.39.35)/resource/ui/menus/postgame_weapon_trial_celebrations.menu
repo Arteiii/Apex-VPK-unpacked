@@ -1,0 +1,51 @@
+resource/ui/menus/postgame_weapon_trial_celebrations.menu
+{
+	menu
+	{
+		ControlName				Frame
+		wide					f0
+		tall					f0
+		autoResize				0
+		pinCorner				0
+		visible					1
+		enabled					1
+		PaintBackgroundType		0
+		infocus_bgcolor_override	"0 0 0 0"
+		outoffocus_bgcolor_override	"0 0 0 0"
+
+		ScreenFrame
+		{
+		    ControlName				Label
+		    xpos					0
+		    ypos					0
+		    wide					%100
+		    tall					%100
+		    labelText				""
+		    //visible				    1
+		    //bgcolor_override        "255 255 0 100"
+		    //paintbackground         1
+		}
+		SideBars
+        {
+            ControlName				RuiPanel
+            wide                    f0
+            tall                    f0
+            rui                     "ui/lobby_ultrawide_sidebars.rpak"
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	CENTER
+            pin_to_sibling_corner	CENTER
+        }
+	    WeaponTrialsProgress
+	    {
+	        ControlName             RTKVGUIPanel
+	        wide                    1920
+	        tall                    1080
+	        prefab                  "ui_rtk/menus/post_game/weapons/postgame_weapon_trial_celebrations.rpak"
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	CENTER
+            pin_to_sibling_corner	CENTER
+	    }
+	}
+}

@@ -1,0 +1,52 @@
+resource/ui/menus/weapon_mastery_trials.menu
+{
+	menu
+	{
+		ControlName				Frame
+		wide					f0
+		tall					f0
+		autoResize				0
+		pinCorner				0
+		visible					1
+		enabled					1
+		PaintBackgroundType		0
+		infocus_bgcolor_override	"0 0 0 0"
+		outoffocus_bgcolor_override	"0 0 0 0"
+
+		Vignette
+        {
+            ControlName             ImagePanel
+            InheritProperties       MenuVignette
+        }
+        ScreenBlur
+        {
+            ControlName				Label
+            labelText				""
+        }
+
+		SideBars
+        {
+            ControlName				RuiPanel
+            wide                    f0
+            tall                    f0
+            rui                     "ui/lobby_ultrawide_sidebars.rpak"
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	CENTER
+            pin_to_sibling_corner	CENTER
+        }
+
+	    WeaponMasteryTrials
+	    {
+	        ControlName             RTKVGUIPanel
+	        wide                    %100
+	        tall                    %100
+	        prefab                  "ui_rtk/menus/mastery/weapons/weapon_mastery_trials_panel.rpak"
+	    }
+	    FooterButtons
+        {
+            ControlName				CNestedPanel
+            InheritProperties       FooterButtons
+        }
+	}
+}

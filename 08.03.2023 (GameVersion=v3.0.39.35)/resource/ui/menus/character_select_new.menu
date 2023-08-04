@@ -1,0 +1,180 @@
+resource/ui/menus/character_select_new.menu
+{
+	menu
+	{
+		ControlName				Frame
+		xpos					0
+		ypos					0
+		zpos					3
+		wide					f0
+		tall					f0
+		autoResize				0
+		pinCorner				0
+		visible					1
+		enabled					1
+		PaintBackgroundType		0
+		infocus_bgcolor_override	"0 0 0 0"
+		outoffocus_bgcolor_override	"0 0 0 0"
+
+        Vignette
+        {
+            ControlName             ImagePanel
+            InheritProperties       MenuVignette
+        }
+
+        ToolTip
+        {
+            ControlName				RuiPanel
+            InheritProperties       ToolTip
+        }
+
+        WhiteFlash
+        {
+            ControlName             ImagePanel
+            xpos                    0
+            ypos                    0
+            wide                    %100
+            tall                    %100
+            visible                 0
+            enabled                 0
+            scaleImage              1
+            image                   "vgui/HUD/white"
+            drawColor               "255 255 255 255"
+            zpos                    100
+        }
+
+        Screen
+        {
+            ControlName				Label
+            wide			        %100
+            tall			        %100
+            labelText				""
+            visible					0
+        }
+
+        SideBars_IgnoreSystem
+        {
+            ControlName				RuiPanel
+            wide                    f0
+            tall                    f0
+            rui                     "ui/lobby_ultrawide_sidebars.rpak"
+
+            pin_to_sibling			Screen
+            pin_corner_to_sibling	CENTER
+            pin_to_sibling_corner	CENTER
+
+            ruiArgs
+            {
+                safeWidth   2600.0
+            }
+        }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        PortraitsPanel
+        {
+            ControlName             CNestedPanel
+            xpos                    0
+            ypos                    0
+            zpos                    50
+            wide			        1920 //%100
+            tall			        1080 //%100
+            visible                 1
+
+            pin_to_sibling			Screen
+            pin_corner_to_sibling	CENTER
+            pin_to_sibling_corner	CENTER
+
+            controlSettingsFile		"resource/ui/menus/panels/character_select_portraits_new.res"
+
+            proportionalToParent    1
+        }
+
+		calloutRuiPanel
+        {
+            ControlName             RuiPanel
+            rui                     "ui/character_select_callout.rpak"
+            wide			        %100
+            tall			        %100
+            xpos                    0
+            ypos                    0
+            zpos                    50
+            visible                 0
+            enabled                 1
+        }
+
+        ButtonHintRuiPanel
+        {
+            ControlName             RuiPanel
+            rui                     "ui/character_select_button_hints.rpak"
+            wide			        1920
+            tall			        %100
+            xpos                    0
+            ypos                    0
+            zpos                    501
+            visible                 1
+            enabled                 1
+
+            pin_to_sibling			Screen
+            pin_corner_to_sibling	CENTER
+            pin_to_sibling_corner	CENTER
+        }
+		RespawnStatus
+        {
+            ControlName				CNestedPanel
+            classname		        RespawnStatusRui
+            xpos					0
+            ypos					-15
+            wide					f0
+            tall					f0
+            visible					1
+            controlSettingsFile		"resource/ui/menus/panels/respawn_status.res"
+        }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	    ButtonTooltip
+		{
+			ControlName				CNestedPanel
+			InheritProperties		ButtonTooltip
+		}
+
+        LobbyChatBox [$WINDOWS]
+        {
+            ControlName             CBaseHudChat
+            InheritProperties       ChatBox
+
+            bgcolor_override        "0 0 0 80"
+            chatBorderThickness     1
+            chatHistoryBgColor      "24 27 30 120"
+            chatEntryBgColor        "24 27 30 120"
+            chatEntryBgColorFocused "24 27 30 120"
+
+            destination                "match"
+            visible                    1
+            teamChat                   1
+            stopMessageModeOnFocusLoss 1
+            menuModeWithFade           1
+
+            pin_to_sibling          Screen
+            pin_corner_to_sibling   LEFT
+            pin_to_sibling_corner   LEFT
+
+            xpos                    -16
+            ypos                    240
+            zpos                    1000
+
+            //wide                    432
+            tall                    200
+        }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		FooterButtons
+		{
+			ControlName				CNestedPanel
+			InheritProperties       FooterButtons
+		}
+	}
+}
+

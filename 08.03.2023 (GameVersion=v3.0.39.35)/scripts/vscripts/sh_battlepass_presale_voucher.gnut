@@ -1,0 +1,46 @@
+global function ShBattlepassPresaleVoucher_LevelInit
+global function GetDisplayImageAssetFromBPPresaleVoucher
+
+                         
+                         
+                        
+                         
+                         
+
+#if SERVER || CLIENT || UI
+void function ShBattlepassPresaleVoucher_LevelInit()
+{
+	AddCallback_RegisterRootItemFlavors( RegisterAllBattlepassPresaleVouchersAsItemFlavors )
+}
+#endif
+
+#if SERVER || CLIENT || UI
+void function RegisterAllBattlepassPresaleVouchersAsItemFlavors()
+{
+	foreach ( asset bpPresaleVoucherAsset in GetBaseItemFlavorsFromArray( "battlepassPresaleVouchers" ) )
+	{
+		if ( bpPresaleVoucherAsset == $"" )
+		{
+			continue
+		}
+		ItemFlavor ornull image2DOrNull = RegisterItemFlavorFromSettingsAsset( bpPresaleVoucherAsset )
+		if ( image2DOrNull == null )
+		{
+			printt( "Failed to register BP Presale Voucher ItemFlavor from Settings Asset ", bpPresaleVoucherAsset )
+		}
+	}
+}
+#endif
+
+                          
+                          
+                          
+                          
+                          
+
+asset function GetDisplayImageAssetFromBPPresaleVoucher( ItemFlavor flavor )
+{
+	Assert( ItemFlavor_GetType( flavor ) == eItemType.battlepass_presale_voucher )
+
+	return GetGlobalSettingsAsset( ItemFlavor_GetAsset( flavor ), "displayImage" )
+}

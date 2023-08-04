@@ -1,0 +1,162 @@
+resource/ui/menus/postgame.menu
+{
+	menu
+	{
+		ControlName				Frame
+		xpos					0
+		ypos					0
+		zpos					3
+		wide					f0
+		tall					f0
+		autoResize				0
+		pinCorner				0
+		visible					1
+		enabled					1
+		PaintBackgroundType		0
+		infocus_bgcolor_override	"0 0 0 0"
+		outoffocus_bgcolor_override	"0 0 0 0"
+
+        ScreenFrame
+        {
+            ControlName				Label
+            xpos					0
+            ypos					0
+            wide					f0
+            tall					f0
+            labelText				""
+            visible				    1
+            bgcolor_override        "0 0 0 160"
+            paintbackground         1
+        }
+        ScreenBlur
+        {
+            ControlName				Label
+            labelText               ""
+        }
+
+        Vignette
+        {
+            ControlName             ImagePanel
+            InheritProperties       MenuVignette
+        }
+
+        SideBars
+        {
+            ControlName				RuiPanel
+            wide                    f0
+            tall                    f0
+            rui                     "ui/lobby_ultrawide_sidebars.rpak"
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	CENTER
+            pin_to_sibling_corner	CENTER
+        }
+
+        TabsBackground
+        {
+            zpos					1
+            ControlName				RuiPanel
+            InheritProperties		TabsBackgroundTall
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	TOP
+            pin_to_sibling_corner	TOP
+
+            ruiArgs
+            {
+                hideSides      1
+            }
+        }
+        TabsCommon
+        {
+            ControlName				CNestedPanel
+            classname				"TabsCommonClass"
+            zpos					2
+            wide					f0
+            tall					84
+            visible					1
+            controlSettingsFile		"resource/ui/menus/panels/common_tabs_tall.res"
+            clip					0
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	TOP
+            pin_to_sibling_corner	TOP
+        }
+		MatchRank
+        {
+            ControlName				RuiPanel
+            rui                     "ui/match_rank.rpak"
+            xpos                    -60
+            ypos                    -12
+            zpos					2
+
+            wide					500
+            tall					140
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	TOP_RIGHT
+            pin_to_sibling_corner	TOP_RIGHT
+        }
+        ContinueButton
+        {
+            ControlName				RuiButton
+            classname               "MenuButton"
+            xpos_nx_handheld		-140			[$NX || $NX_UI_PC]
+            wide					384
+            tall					66
+            rui                     "ui/generic_button.rpak"
+            labelText               ""
+            visible					1
+            cursorVelocityModifier  0.7
+            cursorPriority          20
+            zpos                    2
+            ypos                    -54
+
+            proportionalToParent    1
+
+            ruiArgs
+            {
+                buttonText          "#A_BUTTON_CONTINUE"
+            }
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	BOTTOM
+            pin_to_sibling_corner	BOTTOM
+        }
+
+		PostGameGeneral
+        {
+            ControlName				CNestedPanel
+            classname				"TabPanelClass"
+            wide					%100
+            tall				    940
+            zpos					2
+            controlSettingsFile		"resource/ui/menus/panels/panel_postgame_general.res"
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	TOP
+            pin_to_sibling_corner	TOP
+        }
+                                   
+		    PostGameWeapons
+		    {
+		        ControlName             RTKVGUIPanel
+		        wide                    %100
+                tall				    940
+                zpos					2
+		        prefab                  "ui_rtk/menus/post_game/weapons/postgame_weapons_panel.rpak"
+	            pin_to_sibling			ScreenFrame
+	            pin_corner_to_sibling	TOP
+	            pin_to_sibling_corner	TOP
+		    }
+              
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		FooterButtons
+		{
+			ControlName				CNestedPanel
+			InheritProperties       FooterButtons
+            zpos					1
+		}
+	}
+}

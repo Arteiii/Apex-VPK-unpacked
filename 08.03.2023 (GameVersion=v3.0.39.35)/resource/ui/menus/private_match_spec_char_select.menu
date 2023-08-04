@@ -1,0 +1,115 @@
+"resource/ui/menus/private_match_spec_char_select.menu"
+{
+	menu
+	{
+			ControlName				Frame
+        xpos					0
+        ypos					0
+        zpos					3
+        wide					f0
+        tall					f0
+        autoResize				0
+        pinCorner				0
+        visible					1
+        enabled					1
+        PaintBackgroundType		0
+        infocus_bgcolor_override	"0 0 0 0"
+        outoffocus_bgcolor_override	"0 0 0 0"
+
+
+		ScreenFrame
+		{
+			ControlName				Label
+			xpos					0
+			ypos					0
+			wide					%100
+			tall					%100
+			labelText				""
+			visible				    0
+			bgcolor_override        "0 0 0 160"
+			paintbackground         0
+		}
+
+		PanelFrame
+        {
+            ControlName				Label
+            xpos					0
+            ypos					0
+            wide					1920
+            tall					%100
+            labelText				""
+            visible				    0
+            bgcolor_override        "0 0 0 160"
+            paintbackground         0
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	TOP
+            pin_to_sibling_corner	TOP
+        }
+
+        ScreenBlur
+        {
+            ControlName             Label
+            visible					1
+        }
+
+        Vignette
+        {
+            ControlName             ImagePanel
+            InheritProperties       MenuVignette
+        }
+
+        WhiteFlash
+        {
+            ControlName             ImagePanel
+            xpos                    0
+            ypos                    0
+            wide                    %100
+            tall                    %100
+            visible                 0
+            enabled                 0
+            scaleImage              1
+            image                   "vgui/HUD/white"
+            drawColor               "255 255 255 255"
+            zpos                    100
+        }
+
+		MenuHeader
+		{
+			ControlName				RuiPanel
+			ypos					-40
+			wide					1800
+			tall					208
+			visible				    1
+			rui                     "ui/generic_menu_header.rpak"
+
+			ruiArgs
+			{
+				useAnimation 1
+			}
+			pin_to_sibling			ScreenFrame
+			pin_corner_to_sibling	TOP
+			pin_to_sibling_corner	TOP
+		}
+
+		PrivateMatchScoreboardPanel
+        {
+            ControlName				CNestedPanel
+            wide			        1920
+            tall			        1080
+            xpos                    0
+            ypos                    35
+            zpos                    1
+            visible                 0
+            enabled                 1
+            controlSettingsFile		"resource/ui/menus/panels/teams_scoreboard.res"
+
+
+            xcounterscroll			0.0
+            ycounterscroll			0.0
+
+            pin_to_sibling			ScreenFrame
+            pin_corner_to_sibling	CENTER
+            pin_to_sibling_corner	CENTER
+        }
+	}
+}

@@ -1,0 +1,25 @@
+IsTestMap: false
+
+When: "SERVER"
+Scripts:
+[
+	mp/levels/mp_rr_olympus_mu2.nut
+	mp/levels/survival_preprocess/mp_rr_olympus_mu2.nut
+]
+
+When: "CLIENT"
+Scripts:
+[
+	mp/levels/cl_mp_rr_olympus_mu2.nut
+]
+
+When: "SERVER || CLIENT"
+Scripts:
+[
+	mp/levels/sh_pathfinder_tt_common.nut
+	mp/levels/mp_rr_olympus_common.nut
+
+                    
+		mp/levels/sh_lifeline_tt_common.nut
+       
+]
